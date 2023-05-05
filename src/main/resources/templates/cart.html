@@ -1735,7 +1735,6 @@
       <div class="col-lg-4 check-out" >
         <div class="cart-summary">
           <h3>Summary</h3>
-          <form action="#" method="get" accept-charset="utf-8">
             <table>
               <tbody>
               <tr>
@@ -1753,11 +1752,14 @@
               </tbody>
             </table>
             <div class="btn-cart-totals">
-              <a href="#" class="update round-black-btn" title="">Thanh Toán</a>
+              <form action="/checkout" method="post">
+                <input type="hidden" name="cartid" th:value="${session.customerid}"/>
+                <input type="hidden" name="totalPrice" th:value="${session.totalPrice}" />
+                <!-- Các trường khác trong form -->
+                <button type="submit">Thanh Toán</button>
+              </form>
             </div>
             <!-- /.btn-cart-totals -->
-          </form>
-          <!-- /form -->
         </div>
         <!-- /.cart-totals -->
       </div>

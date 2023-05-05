@@ -23,6 +23,13 @@ public class Order {
 
     @Column(name = "status", nullable = false)
     private String status;
+    @Column(name="delivered_date")
+    private Date delivered_date;
+    @Column(name="expected_start_date")
+    private Date expected_start;
+    @Column(name="expected_end_date")
+    private Date expected_end;
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "payment_id", nullable = false)
@@ -44,11 +51,14 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, Customer customer, Seller seller, String status, Payment payment, Date createdAt, Date updatedAt, List<OrderDetail> orderDetails) {
+    public Order(Long id, Customer customer, Seller seller, String status, Date delivered_date, Date expected_start, Date expected_end, Payment payment, Date createdAt, Date updatedAt, List<OrderDetail> orderDetails) {
         this.id = id;
         this.customer = customer;
         this.seller = seller;
         this.status = status;
+        this.delivered_date = delivered_date;
+        this.expected_start = expected_start;
+        this.expected_end = expected_end;
         this.payment = payment;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -117,5 +127,29 @@ public class Order {
 
     public void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public Date getDelivered_date() {
+        return delivered_date;
+    }
+
+    public void setDelivered_date(Date delivered_date) {
+        this.delivered_date = delivered_date;
+    }
+
+    public Date getExpected_start() {
+        return expected_start;
+    }
+
+    public void setExpected_start(Date expected_start) {
+        this.expected_start = expected_start;
+    }
+
+    public Date getExpected_end() {
+        return expected_end;
+    }
+
+    public void setExpected_end(Date expected_end) {
+        this.expected_end = expected_end;
     }
 }

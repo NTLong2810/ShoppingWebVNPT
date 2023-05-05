@@ -36,6 +36,7 @@ public class AccountController {
             Customer customer = customerRepository.findCustomerByAccount(account);
             // Đăng nhập thành công
             session.setAttribute("customerid", customer.getId() );
+            session.setAttribute("customer", customer);
             session.setAttribute("account",account);
             return "redirect:/home";
         } else {

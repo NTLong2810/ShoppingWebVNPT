@@ -18,17 +18,28 @@ public class Customer {
 
     private String phone;
 
+    private String shipped_address;
+
     // constructors, getters, setters, and other methods
 
     public Customer() {
     }
 
-    public Customer(Long id, Account account, String name, String address, String phone) {
+    public Customer(Long id, Account account, String name, String address, String phone, String shipped_address) {
         this.id = id;
         this.account = account;
         this.name = name;
         this.address = address;
         this.phone = phone;
+        this.shipped_address = shipped_address;
+    }
+
+    public String getShipped_address() {
+        return shipped_address;
+    }
+
+    public void setShipped_address(String shipped_address) {
+        this.shipped_address = shipped_address;
     }
 
     public Long getId() {

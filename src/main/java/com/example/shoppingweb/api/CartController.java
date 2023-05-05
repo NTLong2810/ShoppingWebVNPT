@@ -7,6 +7,7 @@ import com.example.shoppingweb.repository.CartDetailRepository;
 import com.example.shoppingweb.repository.CartRepository;
 import com.example.shoppingweb.repository.ProductRepository;
 import com.example.shoppingweb.service.CartService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,6 +78,7 @@ public class CartController {
     public String Cart(@PathVariable("cartid") Long cartid, Model model, HttpSession session){
         List<CartDetail> cartDetailList = cartService.findbyCartId(cartid);
 
+        //Lưu vào session
         session.setAttribute("listcart", cartDetailList);
         // Tính tổng giá trị của tất cả các đối tượng trong danh sách
         BigDecimal totalPrice = BigDecimal.ZERO;
