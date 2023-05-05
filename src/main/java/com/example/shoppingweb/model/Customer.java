@@ -19,19 +19,28 @@ public class Customer {
     private String phone;
 
     private String shipped_address;
-
+    private String image;
     // constructors, getters, setters, and other methods
 
     public Customer() {
     }
 
-    public Customer(Long id, Account account, String name, String address, String phone, String shipped_address) {
+    public Customer(Long id, Account account, String name, String address, String phone, String shipped_address, String image) {
         this.id = id;
         this.account = account;
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.shipped_address = shipped_address;
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getShipped_address() {

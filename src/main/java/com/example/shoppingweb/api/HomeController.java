@@ -18,7 +18,9 @@ public class HomeController {
     private HomeService homeService;
     @RequestMapping("/home")
     public String home(Model model) {
+        //Lấy ra danh sách sản phẩm
         List<Product> productList = homeService.findAll();
+        //Lấy ra danh sách phân loại
         List<Category> categoryList = homeService.findAllCate();
         model.addAttribute("products", productList);
         model.addAttribute("category", categoryList);
@@ -26,6 +28,7 @@ public class HomeController {
     }
     @GetMapping("/category/{categoryId}")
     public String productsByCategory(@PathVariable Long categoryId, Model model) {
+        //Lấy ra danh sách sản phẩm dựa vào phân loại ( Filter )
         List<Product> products = homeService.getProductsByCategory(categoryId);
         List<Category> categoryList = homeService.findAllCate();
         model.addAttribute("products", products);

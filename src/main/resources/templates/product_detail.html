@@ -3966,7 +3966,7 @@
             <li class="nav-item dropdown">
 
                 <a class="nav-link nav-icon" th:href="@{/cart/{cartid}(cartid=${session.customerid})}">
-                    <i class="bi bi-cart"></i>
+                    <img src="https://banner2.cleanpng.com/20180806/avt/kisspng-logo-shopping-cart-product-design-5b680319bc95d1.4570981015335431937725.jpg" alt="" class="rounded-circle" style="max-height: 40px; max-width: 40px">
                     <span class="badge bg-success badge-number">3</span>
                 </a><!-- End Messages Icon -->
 
@@ -3975,7 +3975,7 @@
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="${customer.image}" alt="Profile" class="rounded-circle">
+                    <img th:src="${session.customer.image}" alt="Profile" class="rounded-circle">
                     <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${session.account.username}"></span>
                 </a><!-- End Profile Iamge Icon -->
 
@@ -3988,7 +3988,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="user-profile">
+                        <a class="dropdown-item d-flex align-items-center" href="/user-profile">
                             <i class="bi bi-person"></i>
                             <span>Thông tin người dùng</span>
                         </a>

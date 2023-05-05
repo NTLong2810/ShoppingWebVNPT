@@ -22,6 +22,7 @@ public class ProductController {
     @GetMapping("/product/{productId}")
     public String Detail(@PathVariable Long productId, Model model){
         Product product = detailService.getProductById(productId);
+        // Lấy ra list feed back tương ứng với sản phẩm
         List<Feedback> feedbackList = detailService.getFeedbackByProduct(productId);
         List<Product> productList = homeService.findAll();
         model.addAttribute("listproduct",productList);

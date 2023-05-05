@@ -24,14 +24,14 @@ public class CheckOutController {
     @Autowired
     private CustomerRepository repository;
     @PostMapping("/checkout")
-    public String checkout(@RequestParam("cartid") Long cartId, @RequestParam("totalPrice") Double totalPrice, @RequestParam("shippedAddress") String shippedAddress,Model model, HttpSession session) {
+    public String checkout(@RequestParam("cartid") Long cartId, @RequestParam("totalPrice") Double totalPrice,Model model, HttpSession session) {
         // retrieve cart details from the database using the cartid
         List<CartDetail> cartDetails = cartService.findbyCartId(cartId);
 
-        // update the shipped address for the customer
-        Customer customer = (Customer) session.getAttribute("customer");
-        customer.setShipped_address(shippedAddress);
-        repository.save(customer);
+//        // update the shipped address for the customer
+//        Customer customer = (Customer) session.getAttribute("customer");
+//        customer.setShipped_address(shippedAddress);
+//        repository.save(customer);
 
         // add the cart details and total price to the model
         model.addAttribute("listcart", cartDetails);
