@@ -1331,7 +1331,7 @@
 
       <!--Cart, order icon-->
       <li class="nav-item dropdown">
-        <a class="nav-link nav-icon" href="">
+        <a class="nav-link nav-icon" th:href="@{/order/{customerid}(customerid=${session.customer.id})}">
           <!--          <i class="bi bi-cart"></i>-->
           <img src="https://icons.veryicon.com/png/o/system/linear-chh/order-27.png" alt="" class="rounded-circle" style="max-height: 40px; max-width: 40px">
         </a>
@@ -1393,14 +1393,14 @@
   <ul class="sidebar-nav" id="sidebar-nav">
 
                <li class="nav-item">
-                        <a class="nav-link collapsed" href="index.html">
+                        <a class="nav-link collapsed" href="/user-profile">
                             <i class="bi bi-grid"></i>
                             <span>Quản lí tài khoản</span>
                         </a>
                     </li>
     <!-- End Dashboard Nav -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="bookdetails.html">
+      <a class="nav-link collapsed" th:href="@{/order/{customerid}(customerid=${session.customer.id})}">
         <i class="bi bi-grid"></i>
         <span>Quản lí đơn hàng</span>
       </a>
@@ -1457,67 +1457,57 @@
         </div>
 
         <div class="tab-content pt-2">
-
-          <div class="tab-pane fade show active order-list" id="order-list">
+          <div class="tab-pane fade show active order-list" id="order-list" th:each="order: ${orders}">
             <form action="/order-list" method="POST">
-                <div class="card">
-                  <div class="card-header ">
-                    <div class="row mb-0">
-                      <label class="col-md-8 col-lg-9">
-                         Chờ thanh toán
-                      </label>
-                      <div class="col-md-4 col-lg-3">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card-body pt-3 ">
-                        <div class="row mb-3 card-header">
-                          <label class="col-md-3 col-lg-4 col-form-label ">
-                            <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
-                                 class="img-thumbnail">
-                          </label>
-                          <div class="col-md-5 col-lg-5">
-                            <font color="black">
-                              ${od.book.title} <br>
-                              x${od.quantity}
-                            </font>
-                          </div>
-                          <div class="col-md-4 col-lg-3">
-                            <p>
-                              <font color="black">
-                                <i class="bi bi-cash"></i>
-                                70000 đ
-                              </font>
-                            </p>
-                          </div>
-                        </div>
-                    <div class="row mb-3 card-header">
-                      <label class="col-md-8 col-lg-9 col-form-label"></label>
-                      <div class="col-md-4 col-lg-3">
-                        <p>
-                          <font color="black">
-                            <i class="bi bi-cash-stack"></i>
-                            Thành tiền: 30000 đ
-                          </font>
-                        </p>
-                        <a href="/orderdetail?oid=${ois.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
-
-                        <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
-                      </div>
+              <div class="card">
+                <div class="card-header">
+                  <div class="row mb-0">
+                    <label class="col-md-8 col-lg-9" th:text="${order.status}"></label>
+                    <div class="col-md-4 col-lg-3">
+                      Mã đơn hàng:
+                      <span  th:text="${order.id}"></span>
                     </div>
                   </div>
                 </div>
-              <div class="card">
-                <div class="text-center">
-                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
-                  <p>Chưa có đơn hàng</p>
+                <div class="card-body pt-3">
+                  <div class="row mb-3 card-header" th:each="listod: ${order.orderDetails}">
+                    <label class="col-md-3 col-lg-4 col-form-label">
+                      <img th:src="${listod.product.image}" alt="pictureBook" width="220" height="290" class="img-thumbnail">
+                    </label>
+                    <div class="col-md-5 col-lg-5">
+                      <font color="black">
+                        <span th:text="${listod.product.name}"></span>
+                        <br>
+                        <span th:text="'x'+${listod.quantity}"></span>
+                      </font>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                      <p>
+                        <font color="black" th:text="${#numbers.formatCurrency(listod.price)}">
+                          <i class="bi bi-cash"></i>
+                        </font>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row mb-3 card-header">
+                    <label class="col-md-8 col-lg-9 col-form-label"></label>
+                    <div class="col-md-4 col-lg-3">
+                      <p>  Thành tiền:
+                        <font color="black" th:text="${#numbers.formatCurrency(order.total)}">
+                          <i class="bi bi-cash-stack"></i>
+                        </font>
+                      </p>
+                      <a href="/orderdetail?oid=${order.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+                      <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>
           </div>
+        </div>
 
-          <div class="tab-pane fade wait-for-pay pt-3" id="wait-for-pay">
+        <div class="tab-pane fade wait-for-pay pt-3" id="wait-for-pay">
             <form action="/order-list" method="POST">
                   <div class="card">
                     <div class="card-header ">

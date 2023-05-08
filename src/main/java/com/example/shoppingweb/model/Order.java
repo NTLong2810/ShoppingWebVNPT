@@ -2,12 +2,13 @@ package com.example.shoppingweb.model;
 
 import javax.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +30,8 @@ public class Order {
     private Date expected_start;
     @Column(name="expected_end_date")
     private Date expected_end;
-
-
+    @Column(name="total")
+    private BigDecimal total;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "payment_id", nullable = false)
     private Payment payment;
@@ -51,7 +52,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, Customer customer, Seller seller, String status, Date delivered_date, Date expected_start, Date expected_end, Payment payment, Date createdAt, Date updatedAt, List<OrderDetail> orderDetails) {
+    public Order(Long id, Customer customer, Seller seller, String status, Date delivered_date, Date expected_start, Date expected_end, BigDecimal total, Payment payment, Date createdAt, Date updatedAt, List<OrderDetail> orderDetails) {
         this.id = id;
         this.customer = customer;
         this.seller = seller;
@@ -59,10 +60,19 @@ public class Order {
         this.delivered_date = delivered_date;
         this.expected_start = expected_start;
         this.expected_end = expected_end;
+        this.total = total;
         this.payment = payment;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.orderDetails = orderDetails;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
     }
 
     public Long getId() {
