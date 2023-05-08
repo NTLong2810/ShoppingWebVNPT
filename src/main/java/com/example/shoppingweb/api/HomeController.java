@@ -4,12 +4,14 @@ import com.example.shoppingweb.model.Category;
 import com.example.shoppingweb.model.Product;
 import com.example.shoppingweb.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -17,7 +19,12 @@ public class HomeController {
     @Autowired
     private HomeService homeService;
     @RequestMapping("/home")
-    public String home(Model model) {
+    public String home(Model model, HttpSession session) {
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        if (session.getAttribute("customer") == null) {
+            // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
+            return "redirect:/login";
+        }
         //Lấy ra danh sách sản phẩm
         List<Product> productList = homeService.findAll();
         //Lấy ra danh sách phân loại

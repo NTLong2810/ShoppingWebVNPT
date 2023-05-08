@@ -1,6 +1,6 @@
 package com.example.shoppingweb.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.math.BigDecimal;
 
@@ -37,9 +37,13 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
     // constructors, getters and setters
 
-    public Product(Long id, String name, String description, String image, BigDecimal price, Integer stock, Category category, Brand brand, Supplier supplier) {
+
+    public Product(Long id, String name, String description, String image, BigDecimal price, Integer stock, Category category, Brand brand, Supplier supplier, Seller seller) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -49,6 +53,15 @@ public class Product {
         this.category = category;
         this.brand = brand;
         this.supplier = supplier;
+        this.seller = seller;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
 
     public Product() {

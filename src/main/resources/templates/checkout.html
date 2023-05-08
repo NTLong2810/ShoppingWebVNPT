@@ -420,7 +420,7 @@
               class="d-flex align-items-center justify-content-between checkout-header">
 
         <div class="logo d-flex align-items-center">
-          <a th:href="@{/cart/{cartid}(cartid=${session.customerid})}">
+          <a th:href="@{/cart/{cartid}(cartid=${session.customer.id})}">
             <span style="font-size: 23px;"> Giỏ hàng </span>
           </a>
           <span class="divider"></span>

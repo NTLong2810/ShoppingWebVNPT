@@ -7,13 +7,12 @@ import com.example.shoppingweb.repository.CartDetailRepository;
 import com.example.shoppingweb.repository.CartRepository;
 import com.example.shoppingweb.repository.ProductRepository;
 import com.example.shoppingweb.service.CartService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +32,12 @@ public class CartController {
     public String addToCart(@RequestParam("productid") Long productId,
                             @RequestParam("cartid") Long cartId,
                             @RequestParam("accountid") Long accountId,
-                            @RequestParam("quantity") int quantity) {
+                            @RequestParam("quantity") int quantity, HttpSession session) {
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        if (session.getAttribute("customer") == null) {
+            // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
+            return "redirect:/login";
+        }
         // Kiểm tra tính hợp lệ của thông tin
         if (productId <= 0 || cartId <= 0 || accountId <= 0 || quantity <= 0) {
             return "redirect:/error"; // Chuyển hướng đến trang lỗi nếu thông tin không hợp lệ
@@ -76,6 +80,11 @@ public class CartController {
     }
     @GetMapping("/cart/{cartid}")
     public String Cart(@PathVariable("cartid") Long cartid, Model model, HttpSession session){
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        if (session.getAttribute("customer") == null) {
+            // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
+            return "redirect:/login";
+        }
         List<CartDetail> cartDetailList = cartService.findbyCartId(cartid);
 
         //Lưu vào session
@@ -90,6 +99,11 @@ public class CartController {
     }
     @GetMapping("/cart/remove/{id}")
     public String removeFromCart(@PathVariable("id") Long id, HttpSession session) {
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        if (session.getAttribute("customer") == null) {
+            // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
+            return "redirect:/login";
+        }
         // Lấy cartid từ CartDetail cần xóa
         Optional<CartDetail> cartDetailOptional = cartDetailRepository.findById(id);
         if (!cartDetailOptional.isPresent()) {

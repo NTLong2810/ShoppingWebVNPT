@@ -1,260 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Order-list - Bakasa Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/images/cart/pngwing.com.png" rel="icon">
+  <link href="assets/images/cart/pngwing.com.png" rel="apple-touch-icon">
+
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 <!--  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
-  <link type="text/css" href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link type="text/css" href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <!-- Template Main CSS File -->
-<!--  <link href="../static/css/home.css" rel="stylesheet">-->
+<!--  <link href="css/style.css" rel="stylesheet">-->
+  <link href="css/order-list.css" rel="stylesheet">
   <style>
-    img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .slider-container {
-      position: static;
-      z-index: -1;
-      margin-top: 10px;
-      width: 90%;
-      margin-left: 5%;
-      /*border: 2px solid black;
-      border-radius: 5px;
-      box-shadow: 3px;*/
-    }
-
-    .img-box {
-      overflow-clip-margin: content-box;
-      overflow: clip;
-      border-radius: 10px;
-    }
-
-    .content-type {
-      background-color: #fff;
-      border: 1px solid rgba(241, 241, 241, 1.0);
-      height: calc(100% - 30px);
-      -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-      align-items: stretch;
-      display: flex;
-      -webkit-box-flex: 1;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      flex-direction: column;
-      border-radius: 5px;
-      margin-bottom: 30px;
-      border: none;
-      box-shadow: 0px 4px 20px 0px rgb(44 101 144 / 10%)
-    }
-
-    .content-header {
-      display: flex;
-      padding: 20px;
-      justify-content: flex-end;
-      align-items: center;
-      margin: 20px;
-      border-bottom: 1px solid rgba(241, 241, 241, 1.0);
-    }
-
-
-    .content-header .sortby{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .content-header .sortby select {
-      width: 150px;
-      height: 40px;
-    }
-    .content-header .sortby p {
-      font-size: 18px;
-      font-weight: bold;
-      width: 150px;
-      padding-top: 5px;
-    }
-
-    .content-body {
-      padding: 20px;
-    }
-
-    .iq-scrollable-block {
-      overflow-x: hidden;
-      overflow-y: scroll;
-      height: 310px;
-    }
-
-    .item {
-      padding: 50px;
-    }
-
-    .col-left {
-      transition: all 0.3s ease-out;
-    }
-    .col-left:hover img{
-      filter: brightness(0.4);
-    }
-
-    .col-right {
-      overflow: hidden;
-    }
-
-    .title {
-      font-weight: bold;
-      font-size: 0.9em;
-      line-height: 1.3em;
-      /*    max-width: 60px;*/
-      max-height: 40px;
-      height: 40px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
-
-    .author{
-      /*    max-width: 50px;*/
-      max-height: 20px;
-      height: 20px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: 13px;
-      line-height: normal;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-    }
-
-    .star {
-      font-size: 0.65em;
-      color: rgba(255, 186, 104, 1.0);
-    }
-
-    .production-action a i {
-      font-size: 1.3em;
-      margin-right: 10px;
-    }
-
-    .old-price {
-      text-decoration: line-through;
-    }
-
-    .sold {
-      font-size: 15px;
-    }
-
-    .iq-icon-box {
-      height: 64px;
-      width: 64px;
-      line-height: 64px;
-      text-align: center;
-      margin-right: 10px;
-      font-size: 26px;
-      text-decoration: none;
-    }
-
-    .avatar-60 {
-      height: 60px;
-      width: 60px;
-      min-width: 60px;
-      line-height: 60px;
-    }
-
-    .rounded-circle {
-      border-radius: 50% !important;
-    }
-
-
-    .progress {
-      height: 8px;
-    }
-
-    .nav-content li:hover>a {
-      background-color: rgba(224, 224, 224, 1.0);
-    }
-
-    .category {
-      position: relative;
-    }
-
-    .option {
-      position: absolute;
-      right: -150px;
-      top: 0;
-      /*	border: 1px solid black;*/
-      box-shadow: 0px 0px 20px rgb(1 41 112 / 10%);
-      z-index: 999;
-      background: rgba(96, 125, 139, 1.0);
-      padding: 0;
-      list-style: none;
-      border-radius: 5px;
-    }
-
-    .option li {
-
-    }
-
-    .option li a {
-      padding: 10px 40px !important;
-      text-decoration: none;
-    }
-
-    .sidebar .nav-item {
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-item:first-child {
-      border-top: 0;
-    }
-
-    .nav-item h6 {
-      color: rgba(12, 211, 128, 1.0);
-    }
-
-    .nav-item ul {
-      list-style: none;
-    }
-
-    .nav-item ul li a {
-      text-decoration: none;
-      color: #666;
-      line-height: 2rem;
-      font-weight: 500;
-      padding-bottom: 50px;
-    }
-
-    .nav-item ul li a:hover {
-      color: rgba(12, 211, 128, 0.7);
-      cursor: pointer;
-    }
-
-    .checkbox {
-      border: 1px solid black;
-      display: inline-block;
-      border-radius: 3px;
-      width: 15px;
-      height: 15px;
-    }
-
-
-
-
-
     /**
-    * Template Name: NiceAdmin - v2.5.0
-    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    */
+* Template Name: NiceAdmin - v2.5.0
+* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
 
     /*--------------------------------------------------------------
     # General
@@ -264,7 +42,7 @@
     }
 
     body {
-      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-family: "Open Sans", sans-serif;
       background: #f6f9ff;
       color: #444444;
     }
@@ -627,7 +405,7 @@
 
     @media (min-width: 1200px) {
       .logo {
-        width: 150px;
+        width: 280px;
       }
     }
 
@@ -661,11 +439,12 @@
       color: #012970;
     }
 
-    .header .search-bar {
-      min-width: 360px;
-      padding: 0 20px;
-      margin-left: 160px;
-    }
+    /*  .header .search-bar {
+        min-width: 360px;
+        padding-left: 20px;
+      }*/
+
+
 
     @media (max-width: 1199px) {
       .header .search-bar {
@@ -722,41 +501,6 @@
       color: #244d3f;
     }
 
-    .search-form .autocom-box{
-      position: absolute;
-      background-color: #fff;
-      padding: 0;
-      opacity: 0;
-      min-width: 320px;
-      pointer-events: none;
-      top: 50px;
-      border-radius: 3px;
-      box-shadow: 0px 4px 20px 0px rgb(44 101 144 / 10%);
-    }
-
-    .search-form.active .autocom-box{
-      padding: 10px 8px;
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .autocom-box li{
-      list-style: none;
-      padding: 8px 12px;
-      display: none;
-      width: 100%;
-      cursor: default;
-      font-weight: 600;
-      border-radius: 3px;
-    }
-
-    .search-form.active .autocom-box li{
-      display: block;
-    }
-    .autocom-box li:hover{
-      background: #efefef;
-    }
-
     /*--------------------------------------------------------------
     # Header Nav
     --------------------------------------------------------------*/
@@ -789,18 +533,9 @@
       font-weight: 600;
     }
 
-    /*.nav-item .nav-icon .bi bi-cart {
-        font-size: 30px;
-        font-weight: bold;
-        display: none;
-    }*/
-    .nav-item .nav-icon {
-      padding-right: 5px;
-    }
     .header-nav .badge-number {
       position: absolute;
-      color: #fff;
-      bottom: 22px;
+      inset: -2px -5px auto auto;
       font-weight: normal;
       font-size: 12px;
       padding: 3px 6px;
@@ -918,7 +653,6 @@
       z-index: 996;
       transition: all 0.3s;
       padding: 20px;
-      padding-top: 10px;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: #aab7cf transparent;
@@ -998,6 +732,7 @@
       font-size: 15px;
       font-weight: 600;
       color: #0ac486;
+      transition: 0.3;
       background: #f6f9ff;
       padding: 10px 15px;
       border-radius: 4px;
@@ -1035,35 +770,40 @@
     .sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
       transform: rotate(180deg);
     }
-    .sidebar-nav .nav-item-list {
-      padding-left: 10px;
+
+    .sidebar-nav .nav-content {
+      padding: 5px 0 0 0;
+      margin: 0;
+      list-style: none;
     }
 
-    .nav-item .nav-title {
-      margin-top: 10px;
+    .sidebar-nav .nav-content a {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #0ac486;
+      transition: 0.3;
+      padding: 10px 0 10px 40px;
+      transition: 0.3s;
     }
 
-    .sidebar-nav .nav-item-list label {
-      font-size: 13px;
-      line-height: 30px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.5s ease-out;
-      margin-left: 10px;
-      width: 200px;
-      white-space: nowrap;
-      /*    overflow: hidden;*/
-      /*    text-overflow: ellipsis;*/
+    .sidebar-nav .nav-content a i {
+      font-size: 6px;
+      margin-right: 8px;
+      line-height: 0;
+      border-radius: 50%;
     }
-    .sidebar-nav .nav-item-list input:hover{
-      cursor: pointer;
+
+    .sidebar-nav .nav-content a:hover,
+    .sidebar-nav .nav-content a.active {
+      color: #0ac486;
     }
-    .sidebar-nav .nav-item-list input:hover label {
-      color: rgba(12, 211, 128, 0.7);
+
+    .sidebar-nav .nav-content a.active i {
+      background-color: #0ac486;
     }
-    .sidebar-nav .nav-item-list label:hover {
-      color: rgba(12, 211, 128, 0.7);
-    }
+
     /*--------------------------------------------------------------
     # Dashboard
     --------------------------------------------------------------*/
@@ -1355,6 +1095,8 @@
       max-width: 120px;
     }
 
+
+
     /*--------------------------------------------------------------
     # F.A.Q Page
     --------------------------------------------------------------*/
@@ -1550,27 +1292,27 @@
       color: #0ac486;
     }
   </style>
-  <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
-  <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-  <title>Homepage</title>
 </head>
+
 <body>
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
   <!--Logo-->
   <div class="d-flex align-items-center justify-content-between">
     <a href="/home" class="logo d-flex align-items-center">
-      <img src="images/pngwing.com.png" alt="">
+      <img src="assets/images/cart/pngwing.com.png" alt="">
       <span class="d-none d-lg-block">Bakasa</span>
+
     </a>
   </div><!-- End Logo -->
 
   <!--search bar-->
   <div class="search-bar">
-    <form class="search-form d-flex align-items-center" method="POST" action="#">
-      <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+    <form class="search-form d-flex align-items-center" method="get" action="home">
+      <input type="text" name="query" placeholder="Tìm kiếm" title="Nhập từ khoá tìm kiếm" value="">
+      <div class="autocom-box">
+        <!-- here list are inserted from javascript -->
+      </div>
       <button type="submit" title="Search"><i class="bi bi-search"></i></button>
     </form>
   </div><!-- End Search Bar -->
@@ -1585,6 +1327,8 @@
           <i class="bi bi-search"></i>
         </a>
       </li><!-- End Search Icon-->
+
+
       <!--Cart, order icon-->
       <li class="nav-item dropdown">
         <a class="nav-link nav-icon" href="">
@@ -1595,11 +1339,12 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link nav-icon" th:href="@{/cart/{cartid}(cartid=${session.customer.id})}">
-<!--          <i class="bi bi-cart"></i>-->
+          <!--          <i class="bi bi-cart"></i>-->
           <img src="https://icons-for-free.com/iconfiles/png/512/cart-131964784999299812.png" alt="" class="rounded-circle" style="max-height: 40px; max-width: 40px">
         </a>
 
       </li><!-- End cart,order Icon -->
+
       <li class="nav-item dropdown pe-3">
 
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -1632,163 +1377,478 @@
             </a>
           </li>
 
-        </ul><!-- End Profile Dropdown Items -->
-      </li><!-- End Profile Nav -->
+        </ul>
+        <!-- End Profile Dropdown Items -->
+      </li>
+      <!-- End Profile Nav -->
 
     </ul>
-  </nav><!-- End Icons Navigation -->
+  </nav>
+  <!-- End Icons Navigation -->
 
 </header><!-- End Header -->
-
-
+<!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
 
   <ul class="sidebar-nav" id="sidebar-nav">
 
-
-    <!-- End Shop Nav -->
+               <li class="nav-item">
+                        <a class="nav-link collapsed" href="index.html">
+                            <i class="bi bi-grid"></i>
+                            <span>Quản lí tài khoản</span>
+                        </a>
+                    </li>
+    <!-- End Dashboard Nav -->
     <li class="nav-item">
-      <h5 class="nav-title">Danh mục sản phẩm</h5>
-      <ul class="nav-item-list">
-        <li class="">
-          <h6>Phân Loại</h6>
-          <ul th:each="category : ${category}">
-            <li><a th:href="@{/category/{categoryId}(categoryId=${category.id})}" th:text="${category.name}"></a></li>
+      <a class="nav-link collapsed" href="bookdetails.html">
+        <i class="bi bi-grid"></i>
+        <span>Quản lí đơn hàng</span>
+      </a>
+    </li>
 
-          </ul>
-        <ul>
-        <li><a href="/home">Tất cả</a></li>
-        </ul>
-        </li>
-      </ul>
+    <!--Page-->
   </ul>
-
 </aside><!-- End Sidebar-->
-
 <main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Đơn hàng của bạn</h1>
+  </div><!-- End Page Title -->
 
-  <section class="slider-container">
+  <section class="section profile">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="card">
+          <div class="card-body pt-3">
+            <!-- Bordered Tabs -->
+            <ul class="nav nav-tabs nav-tabs-bordered">
 
-    <div class="swiper card-slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="img-box">
-            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/Fahasa_T3_04_Bo1_Slide_840x320.jpg">
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="img-box">
-            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/AZ_T04_slide_840x320.jpg">
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="img-box">
-            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/PLATINUM_NCC1980_T42023_Slide_840x320.png">
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="img-box">
-            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/HoaCu_840x320_T423.jpg">
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="img-box">
-            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/FAHASA-Potico840x320.png">
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="img-box">
-            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/Management_mainbanner_T4_840x320_1.jpg">
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="img-box">
-            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/MSAT_mainbanner-T4-840x320.jpg">
-          </div>
-        </div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
+              <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab"
+                        data-bs-target="#order-list">Tất cả</button>
+              </li>
 
-  </section>
-  <!-- End banner -->
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#wait-for-pay">Chờ
+                  thanh toán</button>
+              </li>
 
-  <section class="main-content container-fluid mt-3">
-    <div class="content-type">
-      <div class="container-fluid content-body">
-        <div class="row m-4">
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-4" th:each="product: ${products}">
-            <div class="item row">
-              <div class="col-left col-6 p-0 position-relative">
-                <a th:href="@{/product/{productId}(productId=${product.id})}">
-                <img class="img-fluid round w-100" th:src="${product.image}" alt="">
-                </a>
-              </div>
-              <div class="col-right col-6 d-flex align-items-center">
-                <div class="mb-2">
-                  <h6 class="title mb-1" th:text="${product.name}"></h6>
-                  <p class="author mb-1 text-secondary " th:text="${product.brand.name}"></p>
-                  <div class="d-block mb-2">
-                      <span class="star">
-                        <i class="bi bi-star-fill "></i>
-                        <i class="bi bi-star-fill "></i>
-                        <i class="bi bi-star-fill "></i>
-                        <i class="bi bi-star-fill "></i>
-                        <i class="bi bi-star-fill "></i>
-                      </span>
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#processing">Đang xử lí</button>
+              </li>
+
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab"
+                        data-bs-target="#being-transported">Đang vận chuyển</button>
+              </li>
+
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab"
+                        data-bs-target="#delivered">Đã giao hàng</button>
+              </li>
+
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab"
+                        data-bs-target="#canceled">Đã huỷ</button>
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="tab-content pt-2">
+
+          <div class="tab-pane fade show active order-list" id="order-list">
+            <form action="/order-list" method="POST">
+                <div class="card">
+                  <div class="card-header ">
+                    <div class="row mb-0">
+                      <label class="col-md-8 col-lg-9">
+                         Chờ thanh toán
+                      </label>
+                      <div class="col-md-4 col-lg-3">
+                      </div>
+                    </div>
                   </div>
-                  <div class="price d-flex align-items-center mb-2">
-                    <span th:text="${#numbers.formatCurrency(product.price)}"></span>
-                  </div>
-                  <div class="production-action">
-                    <a th:href="@{/product/{productId}(productId=${product.id})}">
-                      <i class="bi bi-cart-fill text-primary"></i>
-                    </a>
-                    <a th:href="@{/product/{productId}(productId=${product.id})}" class="ml-2">
-                      <i class="bi bi-heart-fill text-danger"></i>
-                    </a>
+
+                  <div class="card-body pt-3 ">
+                        <div class="row mb-3 card-header">
+                          <label class="col-md-3 col-lg-4 col-form-label ">
+                            <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
+                                 class="img-thumbnail">
+                          </label>
+                          <div class="col-md-5 col-lg-5">
+                            <font color="black">
+                              ${od.book.title} <br>
+                              x${od.quantity}
+                            </font>
+                          </div>
+                          <div class="col-md-4 col-lg-3">
+                            <p>
+                              <font color="black">
+                                <i class="bi bi-cash"></i>
+                                70000 đ
+                              </font>
+                            </p>
+                          </div>
+                        </div>
+                    <div class="row mb-3 card-header">
+                      <label class="col-md-8 col-lg-9 col-form-label"></label>
+                      <div class="col-md-4 col-lg-3">
+                        <p>
+                          <font color="black">
+                            <i class="bi bi-cash-stack"></i>
+                            Thành tiền: 30000 đ
+                          </font>
+                        </p>
+                        <a href="/orderdetail?oid=${ois.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+
+                        <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                      </div>
+                    </div>
                   </div>
                 </div>
+              <div class="card">
+                <div class="text-center">
+                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
+                  <p>Chưa có đơn hàng</p>
+                </div>
               </div>
-            </div>
-            </div>
+            </form>
           </div>
+
+          <div class="tab-pane fade wait-for-pay pt-3" id="wait-for-pay">
+            <form action="/order-list" method="POST">
+                  <div class="card">
+                    <div class="card-header ">
+                      <div class="row mb-0">
+                        <label class="col-md-8 col-lg-9">
+                          <p>
+                            <font color="orange"><i class="bi bi-truck"></i> Name</font>
+                          </p>
+                        </label>
+                        <div class="col-md-4 col-lg-3">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-body pt-3 ">
+                          <div class="row mb-3 card-header">
+                            <label class="col-md-3 col-lg-4 col-form-label ">
+                              <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
+                                   class="img-thumbnail">
+                            </label>
+                            <div class="col-md-5 col-lg-5">
+                              <font color="black">
+                                ${od.book.title} <br>
+                                x${od.quantity}
+                              </font>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                              <p>
+                                <font color="black">
+                                  <i class="bi bi-cash"></i>
+                                 30000 đ
+                                </font>
+                              </p>
+                            </div>
+                          </div>
+                      <div class="row mb-3 card-header">
+                        <label class="col-md-8 col-lg-9 col-form-label"></label>
+                        <div class="col-md-4 col-lg-3">
+                          <p>
+                            <font color="black">
+                              <i class="bi bi-cash-stack"></i>
+                              Thành tiền: 30000 đ
+                            </font>
+                          </p>
+                          <a href="/orderdetail?oid=${oís.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+
+                          <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <div class="card">
+                <div class="text-center">
+                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
+                  <p>Chưa có đơn hàng</p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="tab-pane fade pt-3" id="processing">
+            <form action="/order-list" method="POST">
+                  <div class="card">
+                    <div class="card-header ">
+                      <div class="row mb-0">
+                        <label class="col-md-8 col-lg-9">
+                          <p>
+                            <font color="grey"><i class="bi bi-truck"></i> ${ois.orderStatus.name}</font>
+                          </p>
+                        </label>
+                        <div class="col-md-4 col-lg-3">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-body pt-3 ">
+                          <div class="row mb-3 card-header">
+                            <label class="col-md-3 col-lg-4 col-form-label ">
+                              <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
+                                   class="img-thumbnail">
+                            </label>
+                            <div class="col-md-5 col-lg-5">
+                              <font color="black">
+                                ${od.book.title} <br>
+                                x${od.quantity}
+                              </font>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                              <p>
+                                <font color="black">
+                                  <i class="bi bi-cash"></i>
+                                   30000 đ
+                                </font>
+                              </p>
+                            </div>
+                          </div>
+                        </c:if>
+                      </c:forEach>
+                      <div class="row mb-3 card-header">
+                        <label class="col-md-8 col-lg-9 col-form-label"></label>
+                        <div class="col-md-4 col-lg-3">
+                          <p>
+                            <font color="black">
+                              <i class="bi bi-cash-stack"></i>
+                              Thành tiền: 30000 đ
+                            </font>
+                          </p>
+                          <a href="/orderdetail?oid=${oís.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+
+                          <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <div class="card">
+                <div class="text-center">
+                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
+                  <p>Chưa có đơn hàng</p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="tab-pane fade pt-3" id="being-transported">
+            <form action="/order-list" method="POST">
+                  <div class="card">
+                    <div class="card-header ">
+                      <div class="row mb-0">
+                        <label class="col-md-8 col-lg-9">
+                          <p>
+                            <font color="blue"><i class="bi bi-truck"></i> ${ois.orderStatus.name}</font>
+                          </p>
+                        </label>
+                        <div class="col-md-4 col-lg-3">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-body pt-3 ">
+                          <div class="row mb-3 card-header">
+                            <label class="col-md-3 col-lg-4 col-form-label ">
+                              <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
+                                   class="img-thumbnail">
+                            </label>
+                            <div class="col-md-5 col-lg-5">
+                              <font color="black">
+                                ${od.book.title} <br>
+                                x${od.quantity}
+                              </font>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                              <p>
+                                <font color="black">
+                                  <i class="bi bi-cash"></i>
+                                  30000 đ
+                                </font>
+                              </p>
+                            </div>
+                          </div>
+
+                      <div class="row mb-3 card-header">
+                        <label class="col-md-8 col-lg-9 col-form-label"></label>
+                        <div class="col-md-4 col-lg-3">
+                          <p>
+                            <font color="black">
+                              <i class="bi bi-cash-stack"></i>
+                              Thành tiền: 30000 đ
+                            </font>
+                          </p>
+                          <a href="/orderdetail?oid=${ois.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+
+                          <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <div class="card">
+                <div class="text-center">
+                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
+                  <p>Chưa có đơn hàng</p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="tab-pane fade pt-3" id="delivered">
+            <form action="/order-list" method="POST">
+                  <div class="card">
+                    <div class="card-header ">
+                      <div class="row mb-0">
+                        <label class="col-md-8 col-lg-9">
+                          <p>
+                            <font color="green"><i class="bi bi-truck"></i> ${ois.orderStatus.name} ${ois.id}</font>
+                          </p>
+                        </label>
+                        <div class="col-md-4 col-lg-3">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-body pt-3 ">
+                          <div class="row mb-3 card-header">
+                            <label class="col-md-3 col-lg-4 col-form-label ">
+                              <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
+                                   class="img-thumbnail">
+                            </label>
+                            <div class="col-md-5 col-lg-5">
+                              <font color="black">
+                                ${od.book.title} <br>
+                                x${od.quantity}
+                              </font>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                              <p>
+                                <font color="black">
+                                  <i class="bi bi-cash"></i>
+                                  30000 đ
+                                </font>
+                              </p>
+                            </div>
+                          </div>
+                      <div class="row mb-3 card-header">
+                        <label class="col-md-8 col-lg-9 col-form-label"></label>
+                        <div class="col-md-4 col-lg-3">
+                          <p>
+                            <font color="black">
+                              <i class="bi bi-cash-stack"></i>
+                              Thành tiền: 30000 đ
+                            </font>
+                          </p>
+                          <a href="/orderdetail?oid=${ois.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+
+                          <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <div class="card">
+                <div class="text-center">
+                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
+                  <p>Chưa có đơn hàng</p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="tab-pane fade pt-3" id="canceled">
+            <form action="/order-list" method="POST">
+                  <div class="card">
+                    <div class="card-header ">
+                      <div class="row mb-0">
+                        <label class="col-md-8 col-lg-9">
+                          <p>
+                            <font color="red"><i class="bi bi-truck"></i> ${ois.orderStatus.name}</font>
+                          </p>
+                        </label>
+                        <div class="col-md-4 col-lg-3">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-body pt-3 ">
+                          <div class="row mb-3 card-header">
+                            <label class="col-md-3 col-lg-4 col-form-label ">
+                              <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
+                                   class="img-thumbnail">
+                            </label>
+                            <div class="col-md-5 col-lg-5">
+                              <font color="black">
+                                ${od.book.title} <br>
+                                x${od.quantity}
+                              </font>
+                            </div>
+                            <div class="col-md-4 col-lg-3">
+                              <p>
+                                <font color="black">
+                                  <i class="bi bi-cash"></i>
+                                  30000 đ
+                                </font>
+                              </p>
+                            </div>
+                          </div>
+                      <div class="row mb-3 card-header">
+                        <label class="col-md-8 col-lg-9 col-form-label"></label>
+                        <div class="col-md-4 col-lg-3">
+                          <p>
+                            <font color="black">
+                              <i class="bi bi-cash-stack"></i>
+                              Thành tiền: 30000 đ
+                            </font>
+                          </p>
+                          <a href="/orderdetail?oid=${ois.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+                          <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <div class="card">
+                <div class="text-center">
+                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
+                  <p>Chưa có đơn hàng</p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
       </div>
- </div>
-    <!-- End Browser Book -->
-
-
-
-
-
-
     </div>
   </section>
-  <!-- End main content -->
-</main><!-- End #main -->
+
+</main>
+<!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+  <div class="copyright">
+    &copy; Copyright <strong><span>Bakasa</span></strong>. All Rights Reserved
+  </div>
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script type="text/javascript">
-  var swiper = new Swiper(".card-slider", {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    loop: true,
-    autoplay:{
-      delay: 5000,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-</script>
 <script src="vendor/apexcharts/apexcharts.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <!--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
@@ -1798,5 +1858,9 @@
 <script src="vendor/simple-datatables/simple-datatables.js"></script>
 <script src="vendor/tinymce/tinymce.min.js"></script>
 <script src="vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
 </body>
+
 </html>

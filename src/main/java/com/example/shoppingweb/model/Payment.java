@@ -1,7 +1,7 @@
 package com.example.shoppingweb.model;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "payment")

@@ -5,12 +5,13 @@ import com.example.shoppingweb.model.Customer;
 import com.example.shoppingweb.repository.AccountRepository;
 import com.example.shoppingweb.repository.CustomerRepository;
 import com.example.shoppingweb.service.AccountService;
-import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Controller
@@ -35,7 +36,6 @@ public class AccountController {
             Account account = optionalAccount.get();
             Customer customer = customerRepository.findCustomerByAccount(account);
             // Đăng nhập thành công
-            session.setAttribute("customerid", customer.getId() );
             session.setAttribute("customer", customer);
             session.setAttribute("account",account);
             return "redirect:/home";

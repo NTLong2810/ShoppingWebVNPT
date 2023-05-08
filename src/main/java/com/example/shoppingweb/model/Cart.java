@@ -1,6 +1,6 @@
 package com.example.shoppingweb.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 

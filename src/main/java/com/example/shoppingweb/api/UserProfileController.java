@@ -3,13 +3,14 @@ package com.example.shoppingweb.api;
 import com.example.shoppingweb.model.Account;
 import com.example.shoppingweb.model.Customer;
 import com.example.shoppingweb.repository.CustomerRepository;
-import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Controller
@@ -17,7 +18,12 @@ public class UserProfileController {
     @Autowired
     private CustomerRepository customerRepository;
     @RequestMapping("/user-profile")
-        private String User(){
+        private String User(HttpSession session){
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        if (session.getAttribute("customer") == null) {
+            // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
+            return "redirect:/login";
+        }
     return "userprofile";
 }
     @PostMapping("/edit-profile")

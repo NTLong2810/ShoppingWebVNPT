@@ -3932,7 +3932,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
     <!--Logo-->
     <div class="d-flex align-items-center justify-content-between">
-        <a href="http://localhost:8080/home" class="logo d-flex align-items-center">
+        <a href="/home" class="logo d-flex align-items-center">
             <img src="assets/images/cart/pngwing.com.png" alt="">
             <span class="d-none d-lg-block">Bakasa</span>
 
@@ -3962,15 +3962,21 @@
             </li><!-- End Search Icon-->
 
 
-
+            <!--Cart, order icon-->
             <li class="nav-item dropdown">
+                <a class="nav-link nav-icon" href="">
+                    <!--          <i class="bi bi-cart"></i>-->
+                    <img src="https://icons.veryicon.com/png/o/system/linear-chh/order-27.png" alt="" class="rounded-circle" style="max-height: 40px; max-width: 40px">
+                </a>
 
-                <a class="nav-link nav-icon" th:href="@{/cart/{cartid}(cartid=${session.customerid})}">
-                    <img src="https://banner2.cleanpng.com/20180806/avt/kisspng-logo-shopping-cart-product-design-5b680319bc95d1.4570981015335431937725.jpg" alt="" class="rounded-circle" style="max-height: 40px; max-width: 40px">
-                    <span class="badge bg-success badge-number">3</span>
-                </a><!-- End Messages Icon -->
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-icon" th:href="@{/cart/{cartid}(cartid=${session.customer.id})}">
+                    <!--          <i class="bi bi-cart"></i>-->
+                    <img src="https://icons-for-free.com/iconfiles/png/512/cart-131964784999299812.png" alt="" class="rounded-circle" style="max-height: 40px; max-width: 40px">
+                </a>
 
-            </li><!-- End Messages Nav -->
+            </li><!-- End cart,order Icon -->
 
             <li class="nav-item dropdown pe-3">
 
@@ -4032,7 +4038,7 @@
                                 <label>Số lượng:</label>         
                                 <input id="quantity" name="quantity" type="number" onkeypress= 'validateNumber(event)' value="1" min="1" th:max="${product.stock}"/>
                                 <input type="hidden" name="productid" th:value="${product.id}">
-                                <input type="hidden" name="cartid" th:value="${session.customerid}">
+                                <input type="hidden" name="cartid" th:value="${session.customer.id}">
                                    <input type="hidden" name="accountid" th:value="${session.account.id}">
                                     <button type="submit" class="btn btn-fefault cart">
                                     <i class="fa fa-shopping-cart"></i>
