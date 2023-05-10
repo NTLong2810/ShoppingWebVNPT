@@ -805,472 +805,6 @@
     }
 
     /*--------------------------------------------------------------
-    # Dashboard
-    --------------------------------------------------------------*/
-    /* Filter dropdown */
-    .dashboard .filter {
-      position: absolute;
-      right: 0px;
-      top: 15px;
-    }
-
-    .dashboard .filter .icon {
-      color: #aab7cf;
-      padding-right: 20px;
-      padding-bottom: 5px;
-      transition: 0.3s;
-      font-size: 16px;
-    }
-
-    .dashboard .filter .icon:hover,
-    .dashboard .filter .icon:focus {
-      color: #0ac486;
-    }
-
-    .dashboard .filter .dropdown-header {
-      padding: 8px 15px;
-    }
-
-    .dashboard .filter .dropdown-header h6 {
-      text-transform: uppercase;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: #aab7cf;
-      margin-bottom: 0;
-      padding: 0;
-    }
-
-    .dashboard .filter .dropdown-item {
-      padding: 8px 15px;
-    }
-
-    /* Info Cards */
-    .dashboard .info-card {
-      padding-bottom: 10px;
-    }
-
-    .dashboard .info-card h6 {
-      font-size: 28px;
-      color: #0ac486;
-      font-weight: 700;
-      margin: 0;
-      padding: 0;
-    }
-
-    .dashboard .card-icon {
-      font-size: 32px;
-      line-height: 0;
-      width: 64px;
-      height: 64px;
-      flex-shrink: 0;
-      flex-grow: 0;
-    }
-
-    .dashboard .sales-card .card-icon {
-      color: #0ac486;
-      background: #f6f6fe;
-    }
-
-    .dashboard .revenue-card .card-icon {
-      color: #0ac486;
-      background: #e0f8e9;
-    }
-
-    .dashboard .customers-card .card-icon {
-      color: #0ac486;
-      background: #ffecdf;
-    }
-
-    /* Activity */
-    .dashboard .activity {
-      font-size: 14px;
-    }
-
-    .dashboard .activity .activity-item .activite-label {
-      color: #888;
-      position: relative;
-      flex-shrink: 0;
-      flex-grow: 0;
-      min-width: 64px;
-    }
-
-    .dashboard .activity .activity-item .activite-label::before {
-      content: "";
-      position: absolute;
-      right: -11px;
-      width: 4px;
-      top: 0;
-      bottom: 0;
-      background-color: #eceefe;
-    }
-
-    .dashboard .activity .activity-item .activity-badge {
-      margin-top: 3px;
-      z-index: 1;
-      font-size: 11px;
-      line-height: 0;
-      border-radius: 50%;
-      flex-shrink: 0;
-      border: 3px solid #fff;
-      flex-grow: 0;
-    }
-
-    .dashboard .activity .activity-item .activity-content {
-      padding-left: 10px;
-      padding-bottom: 20px;
-    }
-
-    .dashboard .activity .activity-item:first-child .activite-label::before {
-      top: 5px;
-    }
-
-    .dashboard .activity .activity-item:last-child .activity-content {
-      padding-bottom: 0;
-    }
-
-    /* News & Updates */
-    .dashboard .news .post-item+.post-item {
-      margin-top: 15px;
-    }
-
-    .dashboard .news img {
-      width: 80px;
-      float: left;
-      border-radius: 5px;
-    }
-
-    .dashboard .news h4 {
-      font-size: 15px;
-      margin-left: 95px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .dashboard .news h4 a {
-      color: #0ac486;
-      transition: 0.3s;
-    }
-
-    .dashboard .news h4 a:hover {
-      color: #0ac486;
-    }
-
-    .dashboard .news p {
-      font-size: 14px;
-      color: #777777;
-      margin-left: 95px;
-    }
-
-    /* Recent Sales */
-    .dashboard .recent-sales {
-      font-size: 14px;
-    }
-
-    .dashboard .recent-sales .table thead {
-      background: #f6f6fe;
-    }
-
-    .dashboard .recent-sales .table thead th {
-      border: 0;
-    }
-
-    .dashboard .recent-sales .dataTable-top {
-      padding: 0 0 10px 0;
-    }
-
-    .dashboard .recent-sales .dataTable-bottom {
-      padding: 10px 0 0 0;
-    }
-
-    /* Top Selling */
-    .dashboard .top-selling {
-      font-size: 14px;
-    }
-
-    .dashboard .top-selling .table thead {
-      background: #f6f6fe;
-    }
-
-    .dashboard .top-selling .table thead th {
-      border: 0;
-    }
-
-    .dashboard .top-selling .table tbody td {
-      vertical-align: middle;
-    }
-
-    .dashboard .top-selling img {
-      border-radius: 5px;
-      max-width: 60px;
-    }
-
-    /*--------------------------------------------------------------
-    # Icons list page
-    --------------------------------------------------------------*/
-    .iconslist {
-      display: grid;
-      max-width: 100%;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.25rem;
-      padding-top: 15px;
-    }
-
-    .iconslist .icon {
-      background-color: #fff;
-      border-radius: 0.25rem;
-      text-align: center;
-      color: #0ac486;
-      padding: 15px 0;
-    }
-
-    .iconslist i {
-      margin: 0.25rem;
-      font-size: 2.5rem;
-    }
-
-    .iconslist .label {
-      font-family: var(--bs-font-monospace);
-      display: inline-block;
-      width: 100%;
-      overflow: hidden;
-      padding: 0.25rem;
-      font-size: 12px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      color: #666;
-    }
-
-    /*--------------------------------------------------------------
-    # Profie Page
-    --------------------------------------------------------------*/
-    .profile .profile-card img {
-      max-width: 120px;
-    }
-
-    .profile .profile-card h2 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #0ac486;
-      margin: 10px 0 0 0;
-    }
-
-    .profile .profile-card h3 {
-      font-size: 18px;
-    }
-
-    .profile .profile-card .social-links a {
-      font-size: 20px;
-      display: inline-block;
-      color: rgba(1, 112, 97, 0.5);
-      line-height: 0;
-      margin-right: 10px;
-      transition: 0.3s;
-    }
-
-    .profile .profile-card .social-links a:hover {
-      color: #0ac486;
-    }
-
-    .profile .profile-overview .row {
-      margin-bottom: 20px;
-      font-size: 15px;
-    }
-
-    .profile .profile-overview .card-title {
-      color: #0ac486;
-    }
-
-    .profile .profile-overview .label {
-      font-weight: 600;
-      color: rgba(1, 112, 97, 0.5);
-    }
-
-    .profile .profile-edit label {
-      font-weight: 600;
-      color: rgba(1, 112, 97, 0.5);
-    }
-
-    .profile .profile-edit img {
-      max-width: 120px;
-    }
-
-
-
-    /*--------------------------------------------------------------
-    # F.A.Q Page
-    --------------------------------------------------------------*/
-    .faq .basic h6 {
-      font-size: 18px;
-      font-weight: 600;
-      color: #0ac486;
-    }
-
-    .faq .basic p {
-      color: #3ac798;
-    }
-
-    /*--------------------------------------------------------------
-    # Contact
-    --------------------------------------------------------------*/
-    .contact .info-box {
-      padding: 28px 30px;
-    }
-
-    .contact .info-box i {
-      font-size: 38px;
-      line-height: 0;
-      color: #0ac486;
-    }
-
-    .contact .info-box h3 {
-      font-size: 20px;
-      color: #0ac486;
-      font-weight: 700;
-      margin: 20px 0 10px 0;
-    }
-
-    .contact .info-box p {
-      padding: 0;
-      line-height: 24px;
-      font-size: 14px;
-      margin-bottom: 0;
-    }
-
-    .contact .php-email-form .error-message {
-      display: none;
-      color: #fff;
-      background: #ed3c0d;
-      text-align: left;
-      padding: 15px;
-      margin-bottom: 24px;
-      font-weight: 600;
-    }
-
-    .contact .php-email-form .sent-message {
-      display: none;
-      color: #fff;
-      background: #18d26e;
-      text-align: center;
-      padding: 15px;
-      margin-bottom: 24px;
-      font-weight: 600;
-    }
-
-    .contact .php-email-form .loading {
-      display: none;
-      background: #fff;
-      text-align: center;
-      padding: 15px;
-      margin-bottom: 24px;
-    }
-
-    .contact .php-email-form .loading:before {
-      content: "";
-      display: inline-block;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      margin: 0 10px -6px 0;
-      border: 3px solid #18d26e;
-      border-top-color: #eee;
-      -webkit-animation: animate-loading 1s linear infinite;
-      animation: animate-loading 1s linear infinite;
-    }
-
-    .contact .php-email-form input,
-    .contact .php-email-form textarea {
-      border-radius: 0;
-      box-shadow: none;
-      font-size: 14px;
-      border-radius: 0;
-    }
-
-    .contact .php-email-form input:focus,
-    .contact .php-email-form textarea:focus {
-      border-color: #0ac486;
-    }
-
-    .contact .php-email-form input {
-      padding: 10px 15px;
-    }
-
-    .contact .php-email-form textarea {
-      padding: 12px 15px;
-    }
-
-    .contact .php-email-form button[type=submit] {
-      background: #0ac486;
-      border: 0;
-      padding: 10px 30px;
-      color: #fff;
-      transition: 0.4s;
-      border-radius: 4px;
-    }
-
-    .contact .php-email-form button[type=submit]:hover {
-      background: #0ac486;
-    }
-
-    @-webkit-keyframes animate-loading {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes animate-loading {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    /*--------------------------------------------------------------
-    # Error 404
-    --------------------------------------------------------------*/
-    .error-404 {
-      padding: 30px;
-    }
-
-    .error-404 h1 {
-      font-size: 180px;
-      font-weight: 700;
-      color: #0ac486;
-      margin-bottom: 0;
-      line-height: 150px;
-    }
-
-    .error-404 h2 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #0ac486;
-      margin-bottom: 30px;
-    }
-
-    .error-404 .btn {
-      background: #51678f;
-      color: #fff;
-      padding: 8px 30px;
-    }
-
-    .error-404 .btn:hover {
-      background: #3e4f6f;
-    }
-
-    @media (min-width: 992px) {
-      .error-404 img {
-        max-width: 50%;
-      }
-    }
-
-    /*--------------------------------------------------------------
     # Footer
     --------------------------------------------------------------*/
     .footer {
@@ -1433,7 +967,7 @@
               </li>
 
               <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#processing">Đang xử lí</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#processing">Đang xử lý</button>
               </li>
 
               <li class="nav-item">
@@ -1457,8 +991,69 @@
         </div>
 
         <div class="tab-content pt-2">
-          <div class="tab-pane fade show active order-list" id="order-list" th:each="order: ${orders}">
-            <form action="/order-list" method="POST">
+          <!--Tất cả-->
+          <div class="tab-pane fade show active" id="order-list">
+            <div th:if="${not #lists.isEmpty(orders)}" th:each="order: ${orders}">
+            <form action="/order-list" method="POST" >
+              <div class="card">
+                <div class="card-header">
+                  <div class="row mb-0">
+                    <label class="col-md-8 col-lg-9" th:text="${order.status}"></label>
+                    <div class="col-md-4 col-lg-3">
+                      Mã đơn hàng:
+                      <span  th:text="${order.id}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body pt-3">
+                  <div class="row mb-3 card-header" th:each="listod: ${order.orderDetails}">
+                    <label class="col-md-3 col-lg-4 col-form-label">
+                      <img th:src="${listod.product.image}" alt="pictureBook" width="220" height="290" class="img-thumbnail">
+                    </label>
+                    <div class="col-md-5 col-lg-5">
+                      <font color="black">
+                        <span th:text="${listod.product.name}"></span>
+                        <br>
+                        <span th:text="'x'+${listod.quantity}"></span>
+                      </font>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                      <p>
+                        <font color="black" th:text="${#numbers.formatCurrency(listod.price)}">
+                          <i class="bi bi-cash"></i>
+                        </font>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row mb-3 card-header">
+                    <label class="col-md-8 col-lg-9 col-form-label"></label>
+                    <div class="col-md-4 col-lg-3">
+                      <p>  Thành tiền:
+                        <font color="black" th:text="${#numbers.formatCurrency(order.total)}">
+                          <i class="bi bi-cash-stack"></i>
+                        </font>
+                      </p>
+                      <a th:href="@{/orderdetail/{orderid}(orderid=${order.id})}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+                      <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+              </div>
+            <div class="card" th:if="${#lists.isEmpty(orders)}">
+              <div class="text-center">
+                <img src="https://cdn.dribbble.com/users/429792/screenshots/3649946/no_order.png"  alt="Chưa có đơn hàng" style="max-height: 430px;"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Chờ Thanh Toán-->
+
+        <div class="tab-pane fade pt-3" id="wait-for-pay">
+          <div th:if="${not #lists.isEmpty(orders) and orders.?[status == 'Chờ thanh toán'].size() > 0}">
+            <form action="/order-list" method="POST" th:each="order: ${orders}" th:if="${order.status == 'Chờ thanh toán'}">
               <div class="card">
                 <div class="card-header">
                   <div class="row mb-0">
@@ -1503,317 +1098,245 @@
                   </div>
                 </div>
               </div>
+
             </form>
           </div>
-        </div>
-
-        <div class="tab-pane fade wait-for-pay pt-3" id="wait-for-pay">
-            <form action="/order-list" method="POST">
-                  <div class="card">
-                    <div class="card-header ">
-                      <div class="row mb-0">
-                        <label class="col-md-8 col-lg-9">
-                          <p>
-                            <font color="orange"><i class="bi bi-truck"></i> Name</font>
-                          </p>
-                        </label>
-                        <div class="col-md-4 col-lg-3">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card-body pt-3 ">
-                          <div class="row mb-3 card-header">
-                            <label class="col-md-3 col-lg-4 col-form-label ">
-                              <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
-                                   class="img-thumbnail">
-                            </label>
-                            <div class="col-md-5 col-lg-5">
-                              <font color="black">
-                                ${od.book.title} <br>
-                                x${od.quantity}
-                              </font>
-                            </div>
-                            <div class="col-md-4 col-lg-3">
-                              <p>
-                                <font color="black">
-                                  <i class="bi bi-cash"></i>
-                                 30000 đ
-                                </font>
-                              </p>
-                            </div>
-                          </div>
-                      <div class="row mb-3 card-header">
-                        <label class="col-md-8 col-lg-9 col-form-label"></label>
-                        <div class="col-md-4 col-lg-3">
-                          <p>
-                            <font color="black">
-                              <i class="bi bi-cash-stack"></i>
-                              Thành tiền: 30000 đ
-                            </font>
-                          </p>
-                          <a href="/orderdetail?oid=${oís.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
-
-                          <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              <div class="card">
-                <div class="text-center">
-                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
-                  <p>Chưa có đơn hàng</p>
-                </div>
-              </div>
-            </form>
+          <div class="card" th:if="${#lists.isEmpty(orders) or not #lists.contains(orders.![status], 'Chờ thanh toán')}">
+            <div class="text-center">
+              <img src="https://cdn.dribbble.com/users/429792/screenshots/3649946/no_order.png"  alt="Chưa có đơn hàng" style="max-height: 430px;"/>
+            </div>
           </div>
+          </div>
+        <!--Đang xử lý-->
 
           <div class="tab-pane fade pt-3" id="processing">
-            <form action="/order-list" method="POST">
-                  <div class="card">
-                    <div class="card-header ">
-                      <div class="row mb-0">
-                        <label class="col-md-8 col-lg-9">
-                          <p>
-                            <font color="grey"><i class="bi bi-truck"></i> ${ois.orderStatus.name}</font>
-                          </p>
-                        </label>
-                        <div class="col-md-4 col-lg-3">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card-body pt-3 ">
-                          <div class="row mb-3 card-header">
-                            <label class="col-md-3 col-lg-4 col-form-label ">
-                              <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
-                                   class="img-thumbnail">
-                            </label>
-                            <div class="col-md-5 col-lg-5">
-                              <font color="black">
-                                ${od.book.title} <br>
-                                x${od.quantity}
-                              </font>
-                            </div>
-                            <div class="col-md-4 col-lg-3">
-                              <p>
-                                <font color="black">
-                                  <i class="bi bi-cash"></i>
-                                   30000 đ
-                                </font>
-                              </p>
-                            </div>
-                          </div>
-                        </c:if>
-                      </c:forEach>
-                      <div class="row mb-3 card-header">
-                        <label class="col-md-8 col-lg-9 col-form-label"></label>
-                        <div class="col-md-4 col-lg-3">
-                          <p>
-                            <font color="black">
-                              <i class="bi bi-cash-stack"></i>
-                              Thành tiền: 30000 đ
-                            </font>
-                          </p>
-                          <a href="/orderdetail?oid=${oís.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
-
-                          <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
-                        </div>
+            <div th:if="${not #lists.isEmpty(orders) and orders.?[status == 'Đang xử lý'].size() > 0}">
+              <form action="/order-list" method="POST" th:each="order: ${orders}" th:if="${order.status == 'Đang xử lý'}">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row mb-0">
+                      <label class="col-md-8 col-lg-9" th:text="${order.status}"></label>
+                      <div class="col-md-4 col-lg-3">
+                        Mã đơn hàng:
+                        <span  th:text="${order.id}"></span>
                       </div>
                     </div>
                   </div>
-              <div class="card">
-                <div class="text-center">
-                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
-                  <p>Chưa có đơn hàng</p>
+                  <div class="card-body pt-3">
+                    <div class="row mb-3 card-header" th:each="listod: ${order.orderDetails}">
+                      <label class="col-md-3 col-lg-4 col-form-label">
+                        <img th:src="${listod.product.image}" alt="pictureBook" width="220" height="290" class="img-thumbnail">
+                      </label>
+                      <div class="col-md-5 col-lg-5">
+                        <font color="black">
+                          <span th:text="${listod.product.name}"></span>
+                          <br>
+                          <span th:text="'x'+${listod.quantity}"></span>
+                        </font>
+                      </div>
+                      <div class="col-md-4 col-lg-3">
+                        <p>
+                          <font color="black" th:text="${#numbers.formatCurrency(listod.price)}">
+                            <i class="bi bi-cash"></i>
+                          </font>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row mb-3 card-header">
+                      <label class="col-md-8 col-lg-9 col-form-label"></label>
+                      <div class="col-md-4 col-lg-3">
+                        <p>  Thành tiền:
+                          <font color="black" th:text="${#numbers.formatCurrency(order.total)}">
+                            <i class="bi bi-cash-stack"></i>
+                          </font>
+                        </p>
+                        <a href="/orderdetail?oid=${order.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+                        <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </div>
 
+              </form>
+            </div>
+            <div class="card" th:if="${#lists.isEmpty(orders) or not #lists.contains(orders.![status], 'Đang xử lý')}">
+              <div class="text-center">
+                <img src="https://cdn.dribbble.com/users/429792/screenshots/3649946/no_order.png"  alt="Chưa có đơn hàng" style="max-height: 430px;"/>
+              </div>
+            </div>
+          </div>
+          <!--Đang vận chuyển-->
           <div class="tab-pane fade pt-3" id="being-transported">
-            <form action="/order-list" method="POST">
-                  <div class="card">
-                    <div class="card-header ">
-                      <div class="row mb-0">
-                        <label class="col-md-8 col-lg-9">
-                          <p>
-                            <font color="blue"><i class="bi bi-truck"></i> ${ois.orderStatus.name}</font>
-                          </p>
-                        </label>
-                        <div class="col-md-4 col-lg-3">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card-body pt-3 ">
-                          <div class="row mb-3 card-header">
-                            <label class="col-md-3 col-lg-4 col-form-label ">
-                              <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
-                                   class="img-thumbnail">
-                            </label>
-                            <div class="col-md-5 col-lg-5">
-                              <font color="black">
-                                ${od.book.title} <br>
-                                x${od.quantity}
-                              </font>
-                            </div>
-                            <div class="col-md-4 col-lg-3">
-                              <p>
-                                <font color="black">
-                                  <i class="bi bi-cash"></i>
-                                  30000 đ
-                                </font>
-                              </p>
-                            </div>
-                          </div>
-
-                      <div class="row mb-3 card-header">
-                        <label class="col-md-8 col-lg-9 col-form-label"></label>
-                        <div class="col-md-4 col-lg-3">
-                          <p>
-                            <font color="black">
-                              <i class="bi bi-cash-stack"></i>
-                              Thành tiền: 30000 đ
-                            </font>
-                          </p>
-                          <a href="/orderdetail?oid=${ois.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
-
-                          <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
-                        </div>
+            <div th:if="${not #lists.isEmpty(orders) and orders.?[status == 'Đang vận chuyển'].size() > 0}">
+              <form action="/order-list" method="POST" th:each="order: ${orders}" th:if="${order.status == 'Đang vận chuyển'}">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row mb-0">
+                      <label class="col-md-8 col-lg-9" th:text="${order.status}"></label>
+                      <div class="col-md-4 col-lg-3">
+                        Mã đơn hàng:
+                        <span  th:text="${order.id}"></span>
                       </div>
                     </div>
                   </div>
-              <div class="card">
-                <div class="text-center">
-                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
-                  <p>Chưa có đơn hàng</p>
+                  <div class="card-body pt-3">
+                    <div class="row mb-3 card-header" th:each="listod: ${order.orderDetails}">
+                      <label class="col-md-3 col-lg-4 col-form-label">
+                        <img th:src="${listod.product.image}" alt="pictureBook" width="220" height="290" class="img-thumbnail">
+                      </label>
+                      <div class="col-md-5 col-lg-5">
+                        <font color="black">
+                          <span th:text="${listod.product.name}"></span>
+                          <br>
+                          <span th:text="'x'+${listod.quantity}"></span>
+                        </font>
+                      </div>
+                      <div class="col-md-4 col-lg-3">
+                        <p>
+                          <font color="black" th:text="${#numbers.formatCurrency(listod.price)}">
+                            <i class="bi bi-cash"></i>
+                          </font>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row mb-3 card-header">
+                      <label class="col-md-8 col-lg-9 col-form-label"></label>
+                      <div class="col-md-4 col-lg-3">
+                        <p>  Thành tiền:
+                          <font color="black" th:text="${#numbers.formatCurrency(order.total)}">
+                            <i class="bi bi-cash-stack"></i>
+                          </font>
+                        </p>
+                        <a href="/orderdetail?oid=${order.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+                        <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </div>
 
+              </form>
+            </div>
+            <div class="card" th:if="${#lists.isEmpty(orders) or not #lists.contains(orders.![status], 'Đang vận chuyển')}">
+              <div class="text-center">
+                <img src="https://cdn.dribbble.com/users/429792/screenshots/3649946/no_order.png"  alt="Chưa có đơn hàng" style="max-height: 430px;"/>
+              </div>
+            </div>
+          </div>
+          <!--Đã giao hàng-->
           <div class="tab-pane fade pt-3" id="delivered">
-            <form action="/order-list" method="POST">
-                  <div class="card">
-                    <div class="card-header ">
-                      <div class="row mb-0">
-                        <label class="col-md-8 col-lg-9">
-                          <p>
-                            <font color="green"><i class="bi bi-truck"></i> ${ois.orderStatus.name} ${ois.id}</font>
-                          </p>
-                        </label>
-                        <div class="col-md-4 col-lg-3">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card-body pt-3 ">
-                          <div class="row mb-3 card-header">
-                            <label class="col-md-3 col-lg-4 col-form-label ">
-                              <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
-                                   class="img-thumbnail">
-                            </label>
-                            <div class="col-md-5 col-lg-5">
-                              <font color="black">
-                                ${od.book.title} <br>
-                                x${od.quantity}
-                              </font>
-                            </div>
-                            <div class="col-md-4 col-lg-3">
-                              <p>
-                                <font color="black">
-                                  <i class="bi bi-cash"></i>
-                                  30000 đ
-                                </font>
-                              </p>
-                            </div>
-                          </div>
-                      <div class="row mb-3 card-header">
-                        <label class="col-md-8 col-lg-9 col-form-label"></label>
-                        <div class="col-md-4 col-lg-3">
-                          <p>
-                            <font color="black">
-                              <i class="bi bi-cash-stack"></i>
-                              Thành tiền: 30000 đ
-                            </font>
-                          </p>
-                          <a href="/orderdetail?oid=${ois.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
-
-                          <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
-                        </div>
+            <div th:if="${not #lists.isEmpty(orders) and orders.?[status == 'Đã giao hàng'].size() > 0}">
+              <form action="/order-list" method="POST" th:each="order: ${orders}" th:if="${order.status == 'Đã giao hàng'}">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row mb-0">
+                      <label class="col-md-8 col-lg-9" th:text="${order.status}"></label>
+                      <div class="col-md-4 col-lg-3">
+                        Mã đơn hàng:
+                        <span  th:text="${order.id}"></span>
                       </div>
                     </div>
                   </div>
-              <div class="card">
-                <div class="text-center">
-                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
-                  <p>Chưa có đơn hàng</p>
+                  <div class="card-body pt-3">
+                    <div class="row mb-3 card-header" th:each="listod: ${order.orderDetails}">
+                      <label class="col-md-3 col-lg-4 col-form-label">
+                        <img th:src="${listod.product.image}" alt="pictureBook" width="220" height="290" class="img-thumbnail">
+                      </label>
+                      <div class="col-md-5 col-lg-5">
+                        <font color="black">
+                          <span th:text="${listod.product.name}"></span>
+                          <br>
+                          <span th:text="'x'+${listod.quantity}"></span>
+                        </font>
+                      </div>
+                      <div class="col-md-4 col-lg-3">
+                        <p>
+                          <font color="black" th:text="${#numbers.formatCurrency(listod.price)}">
+                            <i class="bi bi-cash"></i>
+                          </font>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row mb-3 card-header">
+                      <label class="col-md-8 col-lg-9 col-form-label"></label>
+                      <div class="col-md-4 col-lg-3">
+                        <p>  Thành tiền:
+                          <font color="black" th:text="${#numbers.formatCurrency(order.total)}">
+                            <i class="bi bi-cash-stack"></i>
+                          </font>
+                        </p>
+                        <a href="/orderdetail?oid=${order.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+                        <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </div>
 
+              </form>
+            </div>
+            <div class="card" th:if="${#lists.isEmpty(orders) or not #lists.contains(orders.![status], 'Đã giao hàng')}">
+              <div class="text-center">
+                <img src="https://cdn.dribbble.com/users/429792/screenshots/3649946/no_order.png"  alt="Chưa có đơn hàng" style="max-height: 430px;"/>
+              </div>
+            </div>
+          </div>
+          <!--Đã huỷ-->
           <div class="tab-pane fade pt-3" id="canceled">
-            <form action="/order-list" method="POST">
-                  <div class="card">
-                    <div class="card-header ">
-                      <div class="row mb-0">
-                        <label class="col-md-8 col-lg-9">
-                          <p>
-                            <font color="red"><i class="bi bi-truck"></i> ${ois.orderStatus.name}</font>
-                          </p>
-                        </label>
-                        <div class="col-md-4 col-lg-3">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card-body pt-3 ">
-                          <div class="row mb-3 card-header">
-                            <label class="col-md-3 col-lg-4 col-form-label ">
-                              <img src="${od.book.image}" alt="pictureBook" width="220" height="290"
-                                   class="img-thumbnail">
-                            </label>
-                            <div class="col-md-5 col-lg-5">
-                              <font color="black">
-                                ${od.book.title} <br>
-                                x${od.quantity}
-                              </font>
-                            </div>
-                            <div class="col-md-4 col-lg-3">
-                              <p>
-                                <font color="black">
-                                  <i class="bi bi-cash"></i>
-                                  30000 đ
-                                </font>
-                              </p>
-                            </div>
-                          </div>
-                      <div class="row mb-3 card-header">
-                        <label class="col-md-8 col-lg-9 col-form-label"></label>
-                        <div class="col-md-4 col-lg-3">
-                          <p>
-                            <font color="black">
-                              <i class="bi bi-cash-stack"></i>
-                              Thành tiền: 30000 đ
-                            </font>
-                          </p>
-                          <a href="/orderdetail?oid=${ois.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
-                          <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
-                        </div>
+            <div th:if="${not #lists.isEmpty(orders) and orders.?[status == 'Đã huỷ'].size() > 0}">
+              <form action="/order-list" method="POST" th:each="order: ${orders}" th:if="${order.status == 'Đã huỷ'}">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row mb-0">
+                      <label class="col-md-8 col-lg-9" th:text="${order.status}"></label>
+                      <div class="col-md-4 col-lg-3">
+                        Mã đơn hàng:
+                        <span  th:text="${order.id}"></span>
                       </div>
                     </div>
                   </div>
-              <div class="card">
-                <div class="text-center">
-                  <img src="assets/images/order-list/5fafbb923393b712b96488590b8f781f.png"  alt="Chưa có đơn hàng"/>
-                  <p>Chưa có đơn hàng</p>
+                  <div class="card-body pt-3">
+                    <div class="row mb-3 card-header" th:each="listod: ${order.orderDetails}">
+                      <label class="col-md-3 col-lg-4 col-form-label">
+                        <img th:src="${listod.product.image}" alt="pictureBook" width="220" height="290" class="img-thumbnail">
+                      </label>
+                      <div class="col-md-5 col-lg-5">
+                        <font color="black">
+                          <span th:text="${listod.product.name}"></span>
+                          <br>
+                          <span th:text="'x'+${listod.quantity}"></span>
+                        </font>
+                      </div>
+                      <div class="col-md-4 col-lg-3">
+                        <p>
+                          <font color="black" th:text="${#numbers.formatCurrency(listod.price)}">
+                            <i class="bi bi-cash"></i>
+                          </font>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row mb-3 card-header">
+                      <label class="col-md-8 col-lg-9 col-form-label"></label>
+                      <div class="col-md-4 col-lg-3">
+                        <p>  Thành tiền:
+                          <font color="black" th:text="${#numbers.formatCurrency(order.total)}">
+                            <i class="bi bi-cash-stack"></i>
+                          </font>
+                        </p>
+                        <a href="/orderdetail?oid=${order.id}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Xem chi tiết</a>
+                        <!--<a href="#" class="btn btn-outline-secondary" role="button" aria-pressed="true">Mua lại</a>-->
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </div>
 
+              </form>
+            </div>
+            <div class="card" th:if="${#lists.isEmpty(orders) or not #lists.contains(orders.![status], 'Đã huỷ')}">
+              <div class="text-center">
+                <img src="https://cdn.dribbble.com/users/429792/screenshots/3649946/no_order.png"  alt="Chưa có đơn hàng" style="max-height: 430px;"/>
+              </div>
+            </div>
+          </div>
+        <!--End Status-->
         </div>
       </div>
     </div>

@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Users / Profile - Bakasa Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/pngwing.com.png" rel="icon">
+  <link href="assets/img/pngwing.com.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  <!-- CSS File -->
+
+  <!--Css for cancer-order-->
+  <link rel="stylesheet" href="assets/css/order-details.css">
+  <!-- For rate star feedback -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script>
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
+      modal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    //FOR FEEDBACK
+    function Feedback() {
+      const btnFeedbacks = document.getElementById("btn");
+      const modalFeedbacks = document.getElementById("modal");
+      //check if button in current element is onclicked
+      if (btnFeedbacks.onclick) {
+        modalFeedbacks.style.display = "block";
+
+      }
+
+    }
+    function CloseFeedback() {
+      const modalFeedbacks = document.getElementById("modal");
+      const closeFeedbacks = document.getElementById("close");
+      //check if close in current element is onclicked
+      if (closeFeedbacks.onclick) {
+        modalFeedbacks.style.display = "none";
+      }
+    }
+      function removeOrder()
+    {
+      var result = confirm("Bạn có muốn hủy đơn hàng không?");
+    }
+  </script>
+  <style>
+    /*For cancer order*/
+    /*For Rate Star*/
+
+    /*Rate Star Feedback
+*/
+    /**{
+    margin: 0;
+    padding: 0;
+}*/
+    .rate {
+      float: left;
+      height: 46px;
+      padding: 0 10px;
+    }
+    .rate:not(:checked) > input {
+      position:absolute;
+      top:-9999px;
+    }
+    .rate:not(:checked) > label {
+      float:right;
+      width:1em;
+      overflow:hidden;
+      white-space:nowrap;
+      cursor:pointer;
+      font-size:30px;
+      color:#ccc;
+    }
+    .rate:not(:checked) > label:before {
+      content: '★ ';
+    }
+    .rate > input:checked ~ label {
+      color: #ffc700;
+    }
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+      color: #deb217;
+    }
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+      color: #c59b08;
+    }
+
+    /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+    /* The Modal (background) */
+    .modal_feedback{
+      color: red;
+    }
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0); /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+
+
+    /* Modal Content/Box */
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      /* Could be more or less, depending on screen size */
+      height: 60% ;
+      box-sizing: border-box;
+      color: black;
+    }
+    .modal-content h5 {
+      font-size: 20px;
+    }
+    .modal-content .modal-note {
+      font-size: 10px;
+      color: red;
+    }
+    .modal-content label {
+      font-size: 10px;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 20px 0;
+    }
+    .modal-content .btn-cancer-order {
+      width: 100%;
+      padding: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background-color: rgb(221, 8, 8);
+      color: white;
+    }
+    .btn-order-details button{
+      border: solid 1px rgb(6, 185, 6);
+      border-radius: 5px;
+      background-color: white;
+      color: rgb(6, 185, 6);
+    }
+    .btn-order-details button:hover{
+      background-color: rgb(6, 185, 6);
+      color: white;
+    }
+    .text{
+      border: solid 1px lightgray;
+      border-radius: 5px;
+      background-color: white;
+    }
+    /* The Close Button */
+    .close_feedback{
+      color: #aaa;
+      float: right;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .closeFeedback :hover,
+    .closeFeedback :focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .close{
+      color: #aaa;
+      float: right;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .close :hover,
+    .close :focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-checkout{
+      border: none;
+      background-color: white;
+      color: #4154f1;
+    }
+    .btn_feedback {
+      border: none;
+      background-color: white;
+      color: #4154f1;
+    }
+
+    /*end cancer order*/
+
+    body {
+      letter-spacing: 0.8px;
+      background-repeat: no-repeat;
+    }
+
+    .container-fluid {
+      margin-top: 80px !important;
+      margin-bottom: 80px !important;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .cursor-pointer {
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none !important;
+    }
+
+    .bold {
+      font-weight: 600;
+    }
+
+    .small {
+      font-size: 12px !important;
+      letter-spacing: 0.5px !important;
+    }
+
+    .Today {
+      color: rgb(83, 83, 83);
+    }
+
+    .btn-outline-primary {
+      background-color: #fff !important;
+      color: #4bb8a9 !important;
+      border: 1.3px solid #4bb8a9;
+      font-size: 12px;
+      border-radius: 0.4em !important;
+    }
+
+    .btn-outline-primary:hover {
+      color: #fff !important;
+      border: 1.3px solid #4bb8a9;
+    }
+
+    .btn-outline-primary:focus,
+    .btn-outline-primary:active {
+      outline: none !important;
+      box-shadow: none !important;
+      border-color: #42a5f5 !important;
+    }
+
+    #progressbar {
+      margin-bottom: 30px;
+      overflow: hidden;
+      color: #455a64;
+      padding-left: 0px;
+      margin-top: 30px;
+    }
+
+    #progressbar li {
+      list-style-type: none;
+      font-size: 13px;
+      width: 33.33%;
+      float: left;
+      position: relative;
+      font-weight: 400;
+      color: #455a64 !important;
+    }
+
+    #progressbar #step1:before {
+      content: "1";
+      color: #fff;
+      width: 29px;
+      margin-left: 15px !important;
+      padding-left: 11px !important;
+    }
+
+    #progressbar #step2:before {
+      content: "2";
+      color: #fff;
+      width: 29px;
+    }
+
+    #progressbar #step3:before {
+      content: "3";
+      color: #fff;
+      width: 29px;
+      margin-right: 15px !important;
+      padding-right: 11px !important;
+    }
+
+    #progressbar li:before {
+      line-height: 29px;
+      display: block;
+      font-size: 12px;
+      background: #455a64;
+      border-radius: 50%;
+      margin: auto;
+    }
+
+    #progressbar li:after {
+      content: "";
+      width: 121%;
+      height: 2px;
+      background: #455a64;
+      position: absolute;
+      left: 0%;
+      right: 0%;
+      top: 15px;
+      z-index: -1;
+    }
+
+    #progressbar li:nth-child(2):after {
+      left: 50%;
+    }
+
+    #progressbar li:nth-child(1):after {
+      left: 25%;
+      width: 121%;
+    }
+    #progressbar li:nth-child(3):after {
+      left: 25% !important;
+      width: 50% !important;
+    }
+
+    #progressbar li.active:before,
+    #progressbar li.active:after {
+      background: #4bb8a9;
+    }
+
+    .card {
+      background-color: #fff;
+      box-shadow: 2px 4px 15px 0px rgb(0, 108, 170);
+      z-index: 0;
+    }
+
+    small {
+      font-size: 12px !important;
+    }
+
+    .border-line {
+      border-right: 1px solid rgb(226, 206, 226);
+    }
+
+    .card-footer img {
+      opacity: 0.3;
+    }
+
+    .card-footer h5 {
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+    .style-body {
+      width: 70%;
+      margin: auto;
+    }
+
+    /*************************
+*******Typography******
+**************************/
+    @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
+    @import url(http://fonts.googleapis.com/css?family=Abel);
+
+    body {
+      font-family: "Roboto", sans-serif;
+      position: relative;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    a:hover {
+      outline: none;
+      text-decoration: none;
+    }
+
+    a:focus {
+      outline: none;
+      outline-offset: 0;
+    }
+
+    a {
+      -webkit-transition: 300ms;
+      -moz-transition: 300ms;
+      -o-transition: 300ms;
+      transition: 300ms;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Roboto", sans-serif;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .navbar-toggle {
+      background-color: #000;
+    }
+
+    a#scrollUp {
+      bottom: 0px;
+      right: 10px;
+      padding: 5px 10px;
+      background: #fe980f;
+      color: #fff;
+      -webkit-animation: bounce 2s ease infinite;
+      animation: bounce 2s ease infinite;
+    }
+
+    a#scrollUp i {
+      font-size: 30px;
+    }
+
+    /*************************
+*******Header CSS******
+**************************/
+
+    .header_top {
+      background: none repeat scroll 0 0 #f0f0e9;
+    }
+
+    .contactinfo ul li:first-child {
+      margin-left: -15px;
+    }
+
+    .contactinfo ul li a {
+      font-size: 12px;
+      color: #696763;
+      font-family: "Roboto", sans-serif;
+    }
+
+    .contactinfo ul li a:hover {
+      background: inherit;
+    }
+
+    .social-icons ul li a {
+      border: 0 none;
+      border-radius: 0;
+      color: #696763;
+      padding: 0px;
+    }
+
+    .social-icons ul li {
+      display: inline-block;
+    }
+
+    .social-icons ul li a i {
+      padding: 11px 15px;
+      transition: all 0.9s ease 0s;
+      -moz-transition: all 0.9s ease 0s;
+      -webkit-transition: all 0.9s ease 0s;
+      -o-transition: all 0.9s ease 0s;
+    }
+
+    .social-icons ul li a i:hover {
+      color: #fff;
+      transition: all 0.9s ease 0s;
+      -moz-transition: all 0.9s ease 0s;
+      -webkit-transition: all 0.9s ease 0s;
+      -o-transition: all 0.9s ease 0s;
+    }
+
+    .fa-facebook:hover {
+      background: #0083c9;
+    }
+
+    .fa-twitter:hover {
+      background: #5bbcec;
+    }
+
+    .fa-linkedin:hover {
+      background: #ff4518;
+    }
+
+    .fa-dribbble:hover {
+      background: #90c9dc;
+    }
+
+    .fa-google-plus:hover {
+      background: #ce3c2d;
+    }
+
+    .header-middle .container .row {
+      border-bottom: 1px solid #f5f5f5;
+      margin-left: 0;
+      margin-right: 0;
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
+
+    .header-middle .container .row .col-sm-4 {
+      padding-left: 0;
+    }
+
+    .header-middle .container .row .col-sm-8 {
+      padding-right: 0;
+    }
+
+    .usa {
+      border-radius: 0;
+      color: #b4b1ab;
+      font-size: 12px;
+      margin-right: 20px;
+      padding: 2px 15px;
+      margin-top: 10px;
+    }
+
+    .usa:hover {
+      background: #fe980f;
+      color: #fff;
+      border-color: #fe980f;
+    }
+
+    .usa:active,
+    .usa.active {
+      background: none repeat scroll 0 0 #fe980f;
+      box-shadow: inherit;
+      outline: 0 none;
+    }
+
+    .btn-group.open .dropdown-toggle {
+      background: rgba(0, 0, 0, 0);
+      box-shadow: none;
+    }
+
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a:focus {
+      background-color: #fe980f;
+      color: #ffffff;
+      font-family: "Roboto", sans-serif;
+      text-decoration: none;
+    }
+
+    .shop-menu ul li {
+      display: inline-block;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .shop-menu ul li:last-child {
+      padding-right: 0;
+    }
+
+    .shop-menu ul li a {
+      background: #ffffff;
+      color: #696763;
+      font-family: "Roboto", sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 0;
+      padding-right: 0;
+      margin-top: 10px;
+    }
+
+    .shop-menu ul li a i {
+      margin-right: 3px;
+    }
+
+    .shop-menu ul li a:hover {
+      color: #fe980f;
+      background: #fff;
+    }
+
+    .header-bottom {
+      padding-bottom: 30px;
+      padding-top: 30px;
+    }
+
+    .navbar-collapse.collapse {
+      padding-left: 0;
+    }
+
+    .mainmenu ul li {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
+    .mainmenu ul li:first-child {
+      padding-left: 0px;
+    }
+
+    .mainmenu ul li a {
+      color: #696763;
+      font-family: "Roboto", sans-serif;
+      font-size: 17px;
+      font-weight: 300;
+      padding: 0;
+      padding-bottom: 10px;
+    }
+
+    .mainmenu ul li a:hover,
+    .mainmenu ul li a.active,
+    .shop-menu ul li a.active {
+      background: none;
+      color: #fdb45e;
+    }
+
+    .search_box input {
+      background: #f0f0e9;
+      border: medium none;
+      color: #b2b2b2;
+      font-family: "roboto";
+      font-size: 12px;
+      font-weight: 300;
+      height: 35px;
+      outline: medium none;
+      padding-left: 10px;
+      width: 155px;
+      background-repeat: no-repeat;
+      background-position: 130px;
+    }
+
+    /*  Dropdown menu*/
+
+    .navbar-header .navbar-toggle .icon-bar {
+      background-color: #fff;
+    }
+
+    .nav.navbar-nav > li:hover > ul.sub-menu {
+      display: block;
+      -webkit-animation: fadeInUp 400ms;
+      -moz-animation: fadeInUp 400ms;
+      -ms-animation: fadeInUp 400ms;
+      -o-animation: fadeInUp 400ms;
+      animation: fadeInUp 400ms;
+    }
+
+    ul.sub-menu {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 220px;
+      -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+      display: none;
+      z-index: 999;
+    }
+
+    .dropdown ul.sub-menu li .active {
+      color: #fdb45e;
+      padding-left: 0;
+    }
+
+    .navbar-nav li ul.sub-menu li {
+      padding: 10px 20px 0;
+    }
+
+    .navbar-nav li ul.sub-menu li:last-child {
+      padding-bottom: 20px;
+    }
+
+    .navbar-nav li ul.sub-menu li a {
+      color: #fff;
+    }
+
+    .navbar-nav li ul.sub-menu li a:hover {
+      color: #fdb45e;
+    }
+
+    .fa-angle-down {
+      padding-left: 5px;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+    }
+
+
+    /*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+    :root {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Open Sans", sans-serif;
+      background: #f6f9ff;
+      color: #444444;
+    }
+
+    a {
+      color: #4154f1;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #717ff5;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Nunito", sans-serif;
+    }
+
+    /*--------------------------------------------------------------
+# Main
+--------------------------------------------------------------*/
+    #main {
+      margin-top: 60px;
+      padding: 20px 30px;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 1199px) {
+      #main {
+        padding: 20px;
+      }
+    }
+
+    /*--------------------------------------------------------------
+# Page Title
+--------------------------------------------------------------*/
+    .pagetitle {
+      margin-bottom: 10px;
+    }
+
+    .pagetitle h1 {
+      font-size: 24px;
+      margin-bottom: 0;
+      font-weight: 600;
+      color: #0ac486;
+    }
+
+
+    /*--------------------------------------------------------------
+# Override some default Bootstrap stylings
+--------------------------------------------------------------*/
+    /* Dropdown menus */
+    .dropdown-menu {
+      border-radius: 4px;
+      padding: 10px 0;
+      -webkit-animation-name: dropdown-animate;
+      animation-name: dropdown-animate;
+      -webkit-animation-duration: 0.2s;
+      animation-duration: 0.2s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      border: 0;
+      box-shadow: 0 5px 30px 0 rgba(82, 63, 105, 0.2);
+    }
+
+    .dropdown-menu .dropdown-header,
+    .dropdown-menu .dropdown-footer {
+      text-align: center;
+      font-size: 15px;
+      padding: 10px 25px;
+    }
+
+    .dropdown-menu .dropdown-footer a {
+      color: #444444;
+      text-decoration: underline;
+    }
+
+    .dropdown-menu .dropdown-footer a:hover {
+      text-decoration: none;
+    }
+
+    .dropdown-menu .dropdown-divider {
+      color: #a5c5fe;
+      margin: 0;
+    }
+
+    .dropdown-menu .dropdown-item {
+      font-size: 14px;
+      padding: 10px 15px;
+      transition: 0.3s;
+    }
+
+    .dropdown-menu .dropdown-item i {
+      margin-right: 10px;
+      font-size: 18px;
+      line-height: 0;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+      background-color: #f6f9ff;
+    }
+
+    @media (min-width: 768px) {
+      .dropdown-menu-arrow::before {
+        content: "";
+        width: 13px;
+        height: 13px;
+        background: #fff;
+        position: absolute;
+        top: -7px;
+        right: 20px;
+        transform: rotate(45deg);
+        border-top: 1px solid #eaedf1;
+        border-left: 1px solid #eaedf1;
+      }
+    }
+
+    @-webkit-keyframes dropdown-animate {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+
+      0% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes dropdown-animate {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+
+      0% {
+        opacity: 0;
+      }
+    }
+
+    /* Light Backgrounds */
+    .bg-primary-light {
+      background-color: #cfe2ff;
+      border-color: #cfe2ff;
+    }
+
+    .bg-secondary-light {
+      background-color: #e2e3e5;
+      border-color: #e2e3e5;
+    }
+
+    .bg-success-light {
+      background-color: #d1e7dd;
+      border-color: #d1e7dd;
+    }
+
+    .bg-danger-light {
+      background-color: #f8d7da;
+      border-color: #f8d7da;
+    }
+
+    .bg-warning-light {
+      background-color: #fff3cd;
+      border-color: #fff3cd;
+    }
+
+    .bg-info-light {
+      background-color: #cff4fc;
+      border-color: #cff4fc;
+    }
+
+    .bg-dark-light {
+      background-color: #d3d3d4;
+      border-color: #d3d3d4;
+    }
+
+    /* Card */
+    .card {
+      margin-bottom: 30px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+    }
+
+    .card-header,
+    .card-footer {
+      border-color: #ebeef4;
+      background-color: #fff;
+      color: #798eb3;
+      padding: 15px;
+    }
+
+    .card-title {
+      padding: 20px 0 15px 0;
+      font-size: 18px;
+      font-weight: 500;
+      color: #012970;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .card-title span {
+      color: #899bbd;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .card-body {
+      padding: 0 20px 20px 20px;
+    }
+
+    .card-img-overlay {
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Alerts */
+    .alert-heading {
+      font-weight: 500;
+      font-family: "Poppins", sans-serif;
+      font-size: 20px;
+    }
+
+    /* Close Button */
+    .btn-close {
+      background-size: 25%;
+    }
+
+    .btn-close:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+
+    /* Accordion */
+    .accordion-item {
+      border: 1px solid #ebeef4;
+    }
+
+    .accordion-button:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+
+    .accordion-button:not(.collapsed) {
+      color: #0ac486;
+      background-color: #f6f9ff;
+    }
+
+    .accordion-flush .accordion-button {
+      padding: 15px 0;
+      background: none;
+      border: 0;
+    }
+
+    .accordion-flush .accordion-button:not(.collapsed) {
+      box-shadow: none;
+      color: #0ac486;
+    }
+
+    .accordion-flush .accordion-body {
+      padding: 0 0 15px 0;
+      color: #3e4f6f;
+      font-size: 15px;
+    }
+
+    /* Breadcrumbs */
+    .breadcrumb {
+      font-size: 14px;
+      font-family: "Nunito", sans-serif;
+      color: #899bbd;
+      font-weight: 600;
+    }
+
+    .breadcrumb a {
+      color: #899bbd;
+      transition: 0.3s;
+    }
+
+    .breadcrumb a:hover {
+      color: #51678f;
+    }
+
+    .breadcrumb .breadcrumb-item::before {
+      color: #899bbd;
+    }
+
+    .breadcrumb .active {
+      color: #51678f;
+      font-weight: 600;
+    }
+
+    /* Bordered Tabs */
+    .nav-tabs-bordered {
+      border-bottom: 2px solid #ebeef4;
+    }
+
+    .nav-tabs-bordered .nav-link {
+      margin-bottom: -2px;
+      border: none;
+      color: #2c384e;
+    }
+
+    .nav-tabs-bordered .nav-link:hover,
+    .nav-tabs-bordered .nav-link:focus {
+      color: #0ac486;
+    }
+
+    .nav-tabs-bordered .nav-link.active {
+      background-color: #fff;
+      color: #0ac486;
+      border-bottom: 2px solid #0ac486;
+    }
+
+    /*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+    .logo {
+      line-height: 1;
+    }
+
+    @media (min-width: 1200px) {
+      .logo {
+        width: 280px;
+      }
+    }
+
+    .logo img {
+      max-height: 26px;
+      margin-right: 6px;
+    }
+
+    .logo span {
+      font-size: 26px;
+      font-weight: 700;
+      color: #012970;
+      font-family: "Nunito", sans-serif;
+    }
+
+    .header {
+      transition: all 0.5s;
+      z-index: 997;
+      height: 60px;
+      box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+      background-color: rgb(12, 211, 128);
+      padding-left: 20px;
+      /* Toggle Sidebar Button */
+      /* Search Bar */
+    }
+
+    .header .toggle-sidebar-btn {
+      font-size: 32px;
+      padding-left: 10px;
+      cursor: pointer;
+      color: #012970;
+    }
+
+    .header .search-bar {
+      min-width: 360px;
+      padding-left: 20px;
+      padding-top: 18px;
+    }
+
+    @media (max-width: 1199px) {
+      .header .search-bar {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        box-shadow: 0px 0px 15px 0px rgba(1, 41, 112, 0.1);
+        background: white;
+        z-index: 9999;
+        transition: 0.3s;
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .header .search-bar-show {
+        top: 60px;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    .header .search-form {
+      width: 100%;
+    }
+
+    .header .search-form input {
+      border: 0;
+      font-size: 14px;
+      color: #012970;
+      border: 1px solid rgba(1, 41, 112, 0.2);
+      padding: 7px 38px 7px 8px;
+      border-radius: 3px;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .header .search-form input:focus,
+    .header .search-form input:hover {
+      outline: none;
+      box-shadow: 0 0 10px 0 rgba(1, 41, 112, 0.15);
+      border: 1px solid rgba(1, 41, 112, 0.3);
+    }
+
+    .header .search-form button {
+      border: 0;
+      padding: 0;
+      margin-left: -30px;
+      background: none;
+    }
+
+    .header .search-form button i {
+      color: #244d3f;
+    }
+
+    /*--------------------------------------------------------------
+# Header Nav
+--------------------------------------------------------------*/
+    .header-nav ul {
+      list-style: none;
+    }
+
+    .header-nav > ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-nav .nav-icon {
+      font-size: 22px;
+      color: #244d3f;
+      margin-right: 25px;
+      position: relative;
+    }
+
+    .header-nav .nav-profile {
+      color: #244d3f;
+    }
+
+    .header-nav .nav-profile img {
+      max-height: 36px;
+    }
+
+    .header-nav .nav-profile span {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .header-nav .badge-number {
+      position: absolute;
+      inset: -2px -5px auto auto;
+      font-weight: normal;
+      font-size: 12px;
+      padding: 3px 6px;
+    }
+
+    .header-nav .notifications {
+      inset: 8px -15px auto auto !important;
+    }
+
+    .header-nav .notifications .notification-item {
+      display: flex;
+      align-items: center;
+      padding: 15px 10px;
+      transition: 0.3s;
+    }
+
+    .header-nav .notifications .notification-item i {
+      margin: 0 20px 0 10px;
+      font-size: 24px;
+    }
+
+    .header-nav .notifications .notification-item h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .header-nav .notifications .notification-item p {
+      font-size: 13px;
+      margin-bottom: 3px;
+      color: #919191;
+    }
+
+    .header-nav .notifications .notification-item:hover {
+      background-color: #f6f9ff;
+    }
+
+    .header-nav .messages {
+      inset: 8px -15px auto auto !important;
+    }
+
+    .header-nav .messages .message-item {
+      padding: 15px 10px;
+      transition: 0.3s;
+    }
+
+    .header-nav .messages .message-item a {
+      display: flex;
+    }
+
+    .header-nav .messages .message-item img {
+      margin: 0 20px 0 10px;
+      max-height: 40px;
+    }
+
+    .header-nav .messages .message-item h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #444444;
+    }
+
+    .header-nav .messages .message-item p {
+      font-size: 13px;
+      margin-bottom: 3px;
+      color: #919191;
+    }
+
+    .header-nav .messages .message-item:hover {
+      background-color: #f6f9ff;
+    }
+
+    .header-nav .profile {
+      min-width: 240px;
+      padding-bottom: 0;
+      top: 8px !important;
+    }
+
+    .header-nav .profile .dropdown-header h6 {
+      font-size: 18px;
+      margin-bottom: 0;
+      font-weight: 600;
+      color: #444444;
+    }
+
+    .header-nav .profile .dropdown-header span {
+      font-size: 14px;
+    }
+
+    .header-nav .profile .dropdown-item {
+      font-size: 14px;
+      padding: 10px 15px;
+      transition: 0.3s;
+    }
+
+    .header-nav .profile .dropdown-item i {
+      margin-right: 10px;
+      font-size: 18px;
+      line-height: 0;
+    }
+
+    .header-nav .profile .dropdown-item:hover {
+      background-color: #f6f9ff;
+    }
+    /*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+    .footer {
+      padding: 20px 0;
+      font-size: 14px;
+      transition: all 0.3s;
+      border-top: 1px solid #cddfff;
+    }
+
+    .footer .copyright {
+      text-align: center;
+      color: #0ac486;
+    }
+
+    .footer .credits {
+      padding-top: 5px;
+      text-align: center;
+      font-size: 13px;
+      color: #0ac486;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+
+  <div class="d-flex align-items-center justify-content-between">
+    <a href="/home" class="logo d-flex align-items-center">
+      <img src="assets/img/pngwing.com.png" alt="">
+      <span class="d-none d-lg-block">Bakasa</span>
+    </a>
+  </div><!-- End Logo -->
+
+  <div class="search-bar">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword">
+      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+  </div><!-- End Search Bar -->
+
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
+
+      <li class="nav-item d-block d-lg-none">
+        <a class="nav-link nav-icon search-bar-toggle " href="#">
+          <i class="bi bi-search"></i>
+        </a>
+      </li><!-- End Search Icon-->
+
+      <!--Cart, order icon-->
+      <li class="nav-item dropdown">
+        <a class="nav-link nav-icon" th:href="@{/order/{customerid}(customerid=${session.customer.id})}">
+          <!--          <i class="bi bi-cart"></i>-->
+          <img src="https://icons.veryicon.com/png/o/system/linear-chh/order-27.png" alt="" class="rounded-circle" style="max-height: 40px; max-width: 40px">
+        </a>
+
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link nav-icon" th:href="@{/cart/{cartid}(cartid=${session.customer.id})}">
+          <!--          <i class="bi bi-cart"></i>-->
+          <img src="https://icons-for-free.com/iconfiles/png/512/cart-131964784999299812.png" alt="" class="rounded-circle" style="max-height: 40px; max-width: 40px">
+        </a>
+
+      </li><!-- End cart,order Icon -->
+
+      <li class="nav-item dropdown pe-3">
+
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <img th:src="${session.customer.image}" alt="Profile" class="rounded-circle">
+          <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${session.customer.name}"></span>
+        </a><!-- End Profile Iamge Icon -->
+
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+          <li class="dropdown-header">
+            <h6 th:text="${session.customer.name}"></h6>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="/user-profile">
+              <i class="bi bi-person"></i>
+              <span>Thông tin người dùng</span>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="/logout">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Đăng xuất</span>
+            </a>
+          </li>
+
+        </ul>
+        <!-- End Profile Dropdown Items -->
+      </li>
+      <!-- End Profile Nav -->
+    </ul>
+  </nav><!-- End Icons Navigation -->
+
+</header><!-- End Header -->
+
+<div class="style-body">
+  <div class="container-fluid" >
+    <div class="card px-2">
+      <div class="card-header bg-white">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p class="text-muted" style="float: right">Thông Tin Vận Chuyển </p>
+            <p class="text-muted"> Mã Đơn: <span class="font-weight-bold text-dark" th:text="${order.id}"></span></p>
+              <p style="float: right"><span class="Today" th:text="${session.customer.name}"></span></p>
+            <p class="text-muted"> Ngày Đặt: <span class="font-weight-bold text-dark" th:text="${#temporals.format(order.createdAt.toLocalDateTime(), 'dd/MM/yyyy')}"></span> </p>
+              <p style="float: right"><span class="Today" th:text="${session.customer.phone}"></span></p>
+            <p class="text-muted"> Nhận Hàng Vào: <span class="font-weight-bold text-dark" th:text="${#temporals.format(order.expected_start.toLocalDateTime(), 'dd/MM/yyyy')} + ' - ' + ${#temporals.format(order.expected_end.toLocalDateTime(), 'dd/MM/yyyy')}"></span> </p>
+              <p style="float: right"><span class="Today">Luu Phai</span></p>
+          </div>
+          <div class="flex-col my-auto">
+            <h6 class="ml-auto mr-3">
+              <a th:href="@{/order/{customerid}(customerid=${session.customer.id})}">Danh sách đơn</a>
+            </h6>
+          </div>
+        </div>
+      </div>
+        <div class="card-body" th:each="listorder: ${orderDetails}">
+          <div class="media flex-column flex-sm-row">
+
+            <div class="media-body ">
+              <img class="align-self-center img-fluid" th:src="${listorder.product.image}" width="250" height="180" style="float: right; margin-top: 10px">
+              <h5 class="bold" th:text="${listorder.product.name}"></h5>
+              <p class="text-muted">Số lượng: <span th:text="${listorder.quantity}"></span></p>
+              <h4 class="mt-3 mb-4 bold"> <span class="mt-5" th:text="${#numbers.formatCurrency(listorder.price)}"></span></h4>
+              <div class="btn-order-details">
+                  <!--FEEDBACK-->
+                  <!-- Trigger/Open The Modal -->
+                    <button onclick="Feedback()" class="btn_feedback" id="btn" th:if="${order.status == 'Đã giao hàng'}">Viết nhận xét</button>
+                    <!-- The Modal -->
+                    <div class="modal my_modal_feedback" id="modal">
+
+                      <!-- Modal content -->
+                      <div class="modal-content" style="width: 40%">
+                        <span class="close_feedback" id="close" onclick="CloseFeedback()">&times;</span>
+                        <div class="col  my-auto">
+                          <h6 th:text="${listorder.product.name}"></h6>
+                          <h4>Vui lòng đánh giá</h4>
+
+                          <form action="feedback" method="POST">
+                            <input type="hidden" name="feed" value="${o.id}"/>
+                            <input type="hidden" name="orderid" value="${order.id}"/>
+                            <textarea class="text" name="comment" rows="3" cols="50" placeholder="Hãy chia sẻ cảm nhận, đánh giá của bạn về sản phẩm này nhé."></textarea>
+                            <div class="container_star">
+                              <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                              </div>
+                            </div>
+                            <input class="btn-cancer-order" type="submit" value="Đồng ý">
+                          </form>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  <!--END FEEDBACK-->
+                <a th:href="@{/product/{productId}(productId=${listorder.product.id})}"><button>Mua lại</button></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      <div class="row px-3">
+        <div class="col">
+          <ul id="progressbar">
+            <ul th:if="${order.status == 'Chờ thanh toán'}">
+                <li class="step0 " id="step1">Chờ thanh toán</li>
+                <li class="step0 text-center" id="step2">Ðang vận chuyển</li>
+                <li class="step0 text-end" id="step3">Đã giao hàng</li>
+            </ul>
+            <ul th:if="${order.status == 'Đang xử lý'}">
+              <li class="step0 active" id="step1">Đang hủy</li>
+              <li class="step0 text-center" id="step2">Đang xử lý</li>
+              <li class="step0 text-end" id="step3">Đã huỷ</li>
+            </ul>
+            <ul th:if="${order.status == 'Đang vận chuyển'}">
+              <li class="step0 active" id="step1">Đã thanh toán</li>
+              <li class="step0 text-center" id="step2">Đang vận chuyển</li>
+              <li class="step0 text-end" id="step3">Đã giao hàng</li>
+            </ul>
+            <ul th:if="${order.status == 'Đã giao hàng'}">
+              <li class="step0 active " id="step1">Đã thanh toán</li>
+              <li class="step0 text-center active" id="step2">Đang vận chuyển</li>
+              <li class="step0 text-end active" id="step3">Đã giao hàng</li>
+            </ul>
+            <ul th:if="${order.status == 'Đã huỷ'}">
+              <li class="step0 active " id="step1">Đang hủy</li>
+              <li class="step0 text-center active" id="step2">Đang xử lý</li>
+              <li class="step0 text-end active" id="step3">Đã huỷ</li>
+            </ul>
+          </ul>
+        </div>
+
+      </div>
+      <div class="card-footer  bg-white px-sm-3 pt-sm-4 px-0" th:if="${order.status == 'Chờ thanh toán'}">
+        <div class="row text-center">
+            <div class="col  my-auto  border-line ">
+              <!--HUỶ ĐƠN-->
+              <!-- Trigger/Open The Modal -->
+              <form action="/cancel" method="POST">
+                <input type="hidden" name="orderId" th:value="${order.id}">
+              <button id="myBtn" class="btn-checkout" onclick="removeOrder()" type="submit"><h5>Hủy Đơn</h5></button>
+              </form>
+              <!-- The Modal -->
+<!--              <div id="myModal" class="modal">-->
+
+<!--                &lt;!&ndash; Modal content &ndash;&gt;-->
+<!--                <div class="modal-content" style="width: 27%;">-->
+<!--                  <span class="close">&times;</span>-->
+<!--                  <div class="col  my-auto">-->
+<!--                    <h5 th:text="'Lí do huỷ đơn hàng' + ${order.id}"></h5>-->
+<!--                    <p>Lưu ý: </p>-->
+<!--                    <p class="modal-note">Mã khuyến mãi vẫn có thể áp dụng cho đơn hàng khác sau khi huỷ đơn hàng này-->
+<!--                      (với các điều kiện áp dụng tương tự)-->
+<!--                    <p>-->
+<!--                    <form action="orderdetail" method="POST">-->
+<!--                      <input type="hidden" name="orderid" value="${order.id}"/>-->
+<!--                      <input type="hidden" name="orderStatus" value="2"/>-->
+
+<!--                      <label>Lí do: </label>-->
+<!--                      <br>-->
+<!--                      <textarea class="text" name="comment" rows="2" cols="50"></textarea>-->
+<!--                      <br/>-->
+<!--                      <input class="btn-cancer-order" type="submit" value="Đồng ý">-->
+<!--                    </form>-->
+<!--                  </div>-->
+
+<!--                </div>-->
+
+<!--              </div>-->
+              <!--END HUỶ ĐƠN-->
+
+            </div>
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ======= Footer ======= -->
+<footer>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <p class="pull-left" style="text-align: center">Copyright © 2023 BAKASA Inc. All rights reserved.</p>
+        <p class="pull-right" style="text-align: center">Designed by <span><a target="_blank" href="">Team Baka</a></span></p>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<!--JS for cancer-order-->
+<script src="assets/js/order-details/modal.js"></script>
+
+</body>
+
+</html>
