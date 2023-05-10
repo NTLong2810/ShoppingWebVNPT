@@ -18,7 +18,9 @@ public class OrderDetail {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
-
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "feedback_id", nullable = false, unique = true)
+    private Feedback feedback;
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
@@ -27,16 +29,26 @@ public class OrderDetail {
 
     // constructors, getters, and setters
 
-    public OrderDetail() {
-    }
-
-    public OrderDetail(Long id, Order order, Product product, Integer quantity, BigDecimal price) {
+    public OrderDetail(Long id, Order order, Product product, Feedback feedback, Integer quantity, BigDecimal price) {
         this.id = id;
         this.order = order;
         this.product = product;
+        this.feedback = feedback;
         this.quantity = quantity;
         this.price = price;
     }
+
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
+    }
+
+    public OrderDetail() {
+    }
+
 
     public Long getId() {
         return id;

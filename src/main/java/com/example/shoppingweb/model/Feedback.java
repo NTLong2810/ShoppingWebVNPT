@@ -19,8 +19,7 @@ public class Feedback {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "order_detail_id", nullable = false)
+    @OneToOne(mappedBy = "feedback", fetch = FetchType.LAZY, optional = false)
     private OrderDetail orderDetail;
 
     @Column(name = "rating", nullable = false)
