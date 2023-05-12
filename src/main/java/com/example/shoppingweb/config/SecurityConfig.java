@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/logout").permitAll()
                 // Đường link phải có vai trò mới truy cập được
                 .antMatchers("/home").permitAll()
+                .antMatchers("/homeseller").permitAll()
                 .antMatchers("/product/**").permitAll()
                 .and()
                 // Cấu hình trang login

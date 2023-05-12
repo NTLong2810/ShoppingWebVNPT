@@ -25,11 +25,11 @@ public class Order {
     @Column(name = "status", nullable = false)
     private String status;
     @Column(name="delivered_date")
-    private Date delivered_date;
+    private Date delivered;
     @Column(name="expected_start_date")
-    private Date expected_start;
+    private Date expectedstart;
     @Column(name="expected_end_date")
-    private Date expected_end;
+    private Date expectedend;
     @Column(name="total")
     private BigDecimal total;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -52,14 +52,14 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, Customer customer, Seller seller, String status, Date delivered_date, Date expected_start, Date expected_end, BigDecimal total, Payment payment, Date createdAt, Date updatedAt, List<OrderDetail> orderDetails) {
+    public Order(Long id, Customer customer, Seller seller, String status, Date delivered, Date expectedstart, Date expectedend, BigDecimal total, Payment payment, Date createdAt, Date updatedAt, List<OrderDetail> orderDetails) {
         this.id = id;
         this.customer = customer;
         this.seller = seller;
         this.status = status;
-        this.delivered_date = delivered_date;
-        this.expected_start = expected_start;
-        this.expected_end = expected_end;
+        this.delivered = delivered;
+        this.expectedstart = expectedstart;
+        this.expectedend = expectedend;
         this.total = total;
         this.payment = payment;
         this.createdAt = createdAt;
@@ -139,27 +139,27 @@ public class Order {
         this.orderDetails = orderDetails;
     }
 
-    public Date getDelivered_date() {
-        return delivered_date;
+    public Date getDelivered() {
+        return delivered;
     }
 
-    public void setDelivered_date(Date delivered_date) {
-        this.delivered_date = delivered_date;
+    public void setDelivered(Date delivered) {
+        this.delivered = delivered;
     }
 
-    public Date getExpected_start() {
-        return expected_start;
+    public Date getExpectedstart() {
+        return expectedstart;
     }
 
-    public void setExpected_start(Date expected_start) {
-        this.expected_start = expected_start;
+    public void setExpectedstart(Date expectedstart) {
+        this.expectedstart = expectedstart;
     }
 
-    public Date getExpected_end() {
-        return expected_end;
+    public Date getExpectedend() {
+        return expectedend;
     }
 
-    public void setExpected_end(Date expected_end) {
-        this.expected_end = expected_end;
+    public void setExpectedend(Date expectedend) {
+        this.expectedend = expectedend;
     }
 }

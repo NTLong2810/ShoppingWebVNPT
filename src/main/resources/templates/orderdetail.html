@@ -1498,12 +1498,12 @@
               <li class="step0 text-end" id="step3">Đã huỷ</li>
             </ul>
             <ul th:if="${order.status == 'Đang vận chuyển'}">
-              <li class="step0 active" id="step1">Đã thanh toán</li>
+              <li class="step0 active" id="step1">Chờ Thanh toán</li>
               <li class="step0 text-center" id="step2">Đang vận chuyển</li>
               <li class="step0 text-end" id="step3">Đã giao hàng</li>
             </ul>
             <ul th:if="${order.status == 'Đã giao hàng'}">
-              <li class="step0 active " id="step1">Đã thanh toán</li>
+              <li class="step0 active " id="step1">Chờ thanh toán</li>
               <li class="step0 text-center active" id="step2">Đang vận chuyển</li>
               <li class="step0 text-end active" id="step3">Đã giao hàng</li>
             </ul>
