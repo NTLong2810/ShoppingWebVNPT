@@ -10,7 +10,7 @@ public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    // FetchType.LAZY các bản ghi liên quan đến quan hệ many-to-one sẽ không được tải ngay khi đối tượng chính được truy vấn. Thay vào đó, chúng sẽ được tải khi cần thiết
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;

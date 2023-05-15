@@ -18,7 +18,8 @@ public class Cart {
     @OneToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id", unique = true)
     private Customer customer;
-
+    // cascade: chỉ định các thao tác (create, update, delete) trên đối tượng chính được phải được áp dụng trên đối tượng liên quan
+    //orphanRemoval: các đối tượng liên quan sẽ bị xóa nếu chúng không còn được tham chiếu bởi đối tượng chính.
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartDetail> cartDetails = new ArrayList<>();
 
