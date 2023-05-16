@@ -1420,7 +1420,7 @@
               <p style="float: right"><span class="Today" th:text="${session.customer.name}"></span></p>
             <p class="text-muted"> Ngày Đặt: <span class="font-weight-bold text-dark" th:text="${#temporals.format(order.createdAt.toLocalDateTime(), 'dd/MM/yyyy')}"></span> </p>
               <p style="float: right"><span class="Today" th:text="${session.customer.phone}"></span></p>
-            <p class="text-muted"> Nhận Hàng Vào: <span class="font-weight-bold text-dark" th:text="${#temporals.format(order.expected_start.toLocalDateTime(), 'dd/MM/yyyy')} + ' - ' + ${#temporals.format(order.expected_end.toLocalDateTime(), 'dd/MM/yyyy')}"></span> </p>
+            <p class="text-muted"> Nhận Hàng Vào: <span class="font-weight-bold text-dark" th:text="${#temporals.format(order.expectedstart.toLocalDateTime(), 'dd/MM/yyyy')} + ' - ' + ${#temporals.format(order.expectedend.toLocalDateTime(), 'dd/MM/yyyy')}"></span> </p>
               <p style="float: right"><span class="Today">Luu Phai</span></p>
           </div>
           <div class="flex-col my-auto">

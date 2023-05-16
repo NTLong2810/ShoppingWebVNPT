@@ -31,12 +31,14 @@ public class FeedbackController {
 
         // tạo đối tượng feedback và set các giá trị
         Feedback feedback = orderDetail.getFeedback();
+        // Nếu chưa có feedback thì tạo feedback mới
         if (feedback == null) {
             feedback = new Feedback();
             feedback.setOrderDetail(orderDetail);
             feedback.setProduct(product);
             feedback.setCustomer(customer);
         }
+        // Nếu đã tồn tại feedback thì chỉ cần update lại rating và comment
         feedback.setRating(rating);
         feedback.setComment(comment);
         feedback.setDate(new Date());

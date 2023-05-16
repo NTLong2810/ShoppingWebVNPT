@@ -19,14 +19,21 @@ import java.util.Optional;
 
 @Controller
 public class CartController {
-    @Autowired
+
     private ProductRepository productRepository;
-    @Autowired
+
     private CartRepository cartRepository;
-    @Autowired
+
     private CartDetailRepository cartDetailRepository;
-    @Autowired
+
     private CartService cartService;
+    @Autowired
+    public CartController(ProductRepository productRepository, CartRepository cartRepository, CartDetailRepository cartDetailRepository, CartService cartService) {
+        this.productRepository = productRepository;
+        this.cartRepository = cartRepository;
+        this.cartDetailRepository = cartDetailRepository;
+        this.cartService = cartService;
+    }
 
     @PostMapping("/add-to-cart")
     public String addToCart(@RequestParam("productid") Long productId,

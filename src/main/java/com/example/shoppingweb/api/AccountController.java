@@ -18,14 +18,21 @@ import java.util.Optional;
 
 @Controller
 public class AccountController {
-    @Autowired
+
     private AccountService service;
-    @Autowired
+
     private AccountRepository repository;
-    @Autowired
+
     private CustomerRepository customerRepository;
-    @Autowired
+
     private SellerRepository sellerRepository;
+    @Autowired
+    public AccountController(AccountService service, AccountRepository repository, CustomerRepository customerRepository, SellerRepository sellerRepository) {
+        this.service = service;
+        this.repository = repository;
+        this.customerRepository = customerRepository;
+        this.sellerRepository = sellerRepository;
+    }
 
     @RequestMapping("/login")
     public String login() {
@@ -39,6 +46,7 @@ public class AccountController {
 
             Account account = optionalAccount.get();
             session.setAttribute("account",account);
+            //Lặp qua các role trong account lấy tên
             String role = account.getRoles().iterator().next().getName();
             if (role.equals("CUSTOMER")) {
                 Customer customer = customerRepository.findCustomerByAccount(account);
