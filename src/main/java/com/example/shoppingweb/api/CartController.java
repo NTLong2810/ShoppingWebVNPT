@@ -83,7 +83,7 @@ public class CartController {
             cartDetailRepository.save(cartDetail);
         }
 
-        return "redirect:/cart/"+ cartId; // Chuyển hướng đến trang giỏ hàng
+        return "redirect:/product/"+ product.getId(); // Chuyển hướng về trang sản phẩm đang chọn 
     }
     @GetMapping("/cart/{cartid}")
     public String Cart(@PathVariable("cartid") Long cartid, Model model, HttpSession session){

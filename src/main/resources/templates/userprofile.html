@@ -951,6 +951,7 @@
             document.getElementById('chars_left').innerHTML = max_len - el.value.length;
             return true;
         }
+        //Changing number when excess 11 type
         function changenumber (el) {
             var max_len = 11;
             if (el.value.length > max_len) {
@@ -960,6 +961,23 @@
             document.getElementById('chars_left').innerHTML = max_len - el.value.length;
             return true;
         }
+
+        // Xác định form và tab "Chỉnh sửa"
+        const form = document.querySelector('form');
+        const profileEditTab = document.getElementById('profile-edit-tab');
+
+        // Thêm sự kiện submit cho form
+        form.addEventListener('submit', function(event) {
+            // Ngăn chặn hành vi mặc định của form (nếu cần thiết)
+            event.preventDefault();
+
+            // Chuyển đổi tab về tab "Chỉnh sửa"
+            const tab = new bootstrap.Tab(profileEditTab);
+            tab.show();
+
+            // Gửi form (nếu cần thiết)
+            this.submit();
+        });
     </script>
 </head>
 <body>
@@ -1093,7 +1111,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh sửa</button>
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" id="profile-edit-tab">Chỉnh sửa</button>
                             </li>
 
                             <li class="nav-item">
@@ -1161,7 +1179,7 @@
                                     <div class="row mb-3">
                                         <label for="fullName" class="col-md-4 col-lg-3 col-form-label" >Họ và tên</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input required name="customer_name" type="text" class="form-control" placeholder="Nhập tên người dùng không quá 30 ký tự" id="fullName" th:value="${session.customer.name}">
+                                            <input required name="customer_name" type="text" class="form-control" placeholder="Nhập tên người dùng không quá 30 ký tự" id="fullName" onkeyup="change(this);" onkeypress='validateNumberandLetter(event)' th:value="${session.customer.name}">
                                         </div>
                                     </div>
 
@@ -1175,8 +1193,9 @@
                                     <div class="row mb-3">
                                         <label class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input required name="customer_email" type="email" class="form-control" placeholder="Nhập địa chỉ email" id="email"
+                                            <input required name="customer_email" type="email" class="form-control" placeholder="Nhập địa chỉ email" id="email" onkeypress='validateEmail(event)'
                                                    th:value="${session.account.email}">
+                                            <p style="color: red" th:utext="${messEmail}"></p>
                                         </div>
                                     </div>
 
@@ -1184,15 +1203,15 @@
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Địa chỉ</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input required name="customer_address" type="text" placeholder="Nhập địa chỉ nơi ở" class="form-control" id="address" th:value="${session.customer.address}">
+                                            <input required name="customer_address" type="text" placeholder="Nhập địa chỉ nơi ở" class="form-control" id="address" onkeypress='validateNumberandLetterandComma(event)' th:value="${session.customer.address}">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label" >Địa chỉ giao hàng</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="customer_shipped_address" type="text" class="form-control" placeholder="Nhập địa chỉ giao hàng" id="address1" th:value="${session.customer.shipped_address}" th:if="${session.customer.shipped_address} !=null">
-                                            <input name="customer_shipped_address" type="text" class="form-control" placeholder="Nhập địa chỉ giao hàng" id="address2" th:if="${session.customer.shipped_address} ==null">
+                                            <input name="customer_shipped_address" type="text" class="form-control" placeholder="Nhập địa chỉ giao hàng" id="address1" onkeypress='validateNumberandLetterandComma(event)' th:value="${session.customer.shipped_address}" th:if="${session.customer.shipped_address} !=null">
+                                            <input name="customer_shipped_address" type="text" class="form-control" placeholder="Nhập địa chỉ giao hàng" id="address2" onkeypress='validateNumberandLetterandComma(event)' th:if="${session.customer.shipped_address} ==null">
                                         </div>
                                     </div>
 
