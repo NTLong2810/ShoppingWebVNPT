@@ -1,0 +1,135 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+.card-body{
+    font-size: 14px;
+}
+.card-header a {
+    padding: 10px 15px;
+    /*    height: fit-content;*/
+    float: right;
+    font-size: 14px;
+
+}
+.product {
+    width: 250px;
+}
+
+.product .image {
+    width: 80px;
+    height: 60px;
+}
+
+.product .image img {
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.product .title {
+    width: 150px;
+    margin: 0;
+}
+
+.product .title .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit a i {
+    color: rgb(12, 211, 128);
+}
+
+.search .select {
+    width: 85px;
+
+}
+
+.search .select .form-select {
+    width: 100%;
+    font-size: 14px;
+}
+
+.search {
+    margin-top: 15px;
+}
+
+.search .search-bar {
+    width: 65%;
+    padding: 0;
+}
+.search-by-name{
+    display: flex;
+}
+.range-search input{
+    font-size: 14px;
+
+}
+.range-search{
+    display: flex;
+    gap: 10px;
+}
+.search-by-price{
+    display: flex;
+}
+form {
+    border-bottom: 1px solid rgba(56, 50, 50, 0.1);
+    padding-bottom: 30px;
+}
+
+.submit {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submit input {
+    padding: 10px 15px;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+thead th span.icon-arrow {
+    display: inline-block;
+    text-align: center;
+    transition: all .2s ease-in-out;
+}
+
+thead th:hover {
+    cursor: pointer;
+    color: greenyellow;
+}
+thead th:first-child:hover, th:last-child:hover {
+    cursor: default;
+    color: #FFFFFF;
+}
+
+thead th.asc span.icon-arrow{
+    transform: rotate(180deg);
+}
+
+thead th.active,tbody td.active {
+
+}
+
+.form-control{
+    font-size: 14.5px;
+}
+.nav-item a{
+    font-size: 14.5px;
+
+}
+.card-title{
+    font-size: 16px;
+}
