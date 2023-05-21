@@ -43,6 +43,13 @@ public class AddProductController {
         if (existingProduct != null) {
             // Nếu sản phẩm đã tồn tại, hiển thị thông báo lỗi
             model.addAttribute("errorMessage", "Sản phẩm đã tồn tại");
+            List<Supplier> suppliers = productService.getAllSuppliers();
+            List<Brand> brands = productService.getAllBrands();
+            List<Category> categoríes = productService.getAllCategories();
+            model.addAttribute("categories", categoríes);
+            model.addAttribute("suppliers", suppliers);
+            model.addAttribute("brands", brands);
+
             // và chuyển hướng người dùng đến trang thông báo lỗi hoặc trang khác
             return "addproduct"; // Ví dụ: chuyển hướng đến trang thông báo lỗi
         }
@@ -71,7 +78,7 @@ public class AddProductController {
 
 
         // Redirect hoặc trả về trang thành công
-        return "redirect:/login"; // Ví dụ: chuyển hướng về trang danh sách sản phẩm
+        return "redirect:/product-list"; // Ví dụ: chuyển hướng về trang danh sách sản phẩm
 
     }
 }

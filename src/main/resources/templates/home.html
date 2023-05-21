@@ -13,6 +13,23 @@
   <link href="css/home.css" rel="stylesheet">
   <!--CSS-->
   <style>
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .input-wrapper input[type="text"] {
+      padding-right: 40px; /* Để tạo khoảng trống cho hình ảnh */
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      max-width: 7%;
+    }
     img {
       width: 100%;
       border-radius: 10px;
@@ -1103,11 +1120,16 @@
 
   <!--search bar-->
   <div class="search-bar">
-    <form class="search-form d-flex align-items-center" method="POST" action="#">
-      <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-    </form>
-  </div><!-- End Search Bar -->
+
+      <div class="input-wrapper">
+        <form class="search-form d-flex align-items-center" method="GET" action="/search">
+        <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword">
+        <button type="submit" title="Search"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png" alt="" class="search-icon"></button>
+        </form>
+      </div>
+
+  </div>
+  <!-- End Search Bar -->
 
   <!--icons navigation-->
   <nav class="header-nav ms-auto">
@@ -1252,9 +1274,14 @@
   <section class="main-content container-fluid mt-3">
     <div class="content-type">
       <div class="container-fluid content-body">
+        <div th:if="${noResultsMessage}">
+          <p th:text="${noResultsMessage}"></p>
+        </div>
+        <div th:unless="${noResultsMessage}">
         <div class="row m-4">
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-4" th:each="product: ${products}">
-            <th:block th:if="${product.stock > 0}">
+          <th:block th:each="product: ${products}">
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-4" th:if="${product.stock > 0}">
+
             <div class="item row">
               <div class="col-left col-6 p-0 position-relative">
                 <a th:href="@{/product/{productId}(productId=${product.id})}">
@@ -1288,9 +1315,11 @@
                 </div>
               </div>
             </div>
-            </th:block>
+
             </div>
+          </th:block>
           </div>
+        </div>
       </div>
  </div>
     <!-- End Browser Book -->

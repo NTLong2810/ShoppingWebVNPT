@@ -1,5 +1,6 @@
 package com.example.shoppingweb.api;
 
+import com.example.shoppingweb.model.Category;
 import com.example.shoppingweb.model.Feedback;
 import com.example.shoppingweb.model.Product;
 import com.example.shoppingweb.service.HomeService;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -30,10 +32,16 @@ public class ProductController {
         Product product = detailService.getProductById(productId);
         // Lấy ra list feed back tương ứng với sản phẩm
         List<Feedback> feedbackList = detailService.getFeedbackByProduct(productId);
+        if(feedbackList.isEmpty()){
+            model.addAttribute("messEmpty", "Chưa có bình luận nào");
+        }else{
+            model.addAttribute("feedbacks",feedbackList);
+        }
         List<Product> productList = homeService.findAll();
         model.addAttribute("listproduct",productList);
         model.addAttribute("product",product);
-        model.addAttribute("feedbacks",feedbackList);
+
         return "product_detail";
     }
+
 }

@@ -73,7 +73,23 @@
     </script>
     <!--CSS-->
     <style>
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
 
+        .input-wrapper input[type="text"] {
+            padding-right: 40px; /* Để tạo khoảng trống cho hình ảnh */
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            max-width: 7%;
+        }
         /*************************
 *******Typography******
 **************************/
@@ -1180,6 +1196,7 @@
             min-width: 360px;
             padding-left: 20px;
             padding-top: 18px;
+            margin-bottom: 20px;
         }
 
         @media (max-width: 1199px) {
@@ -1475,13 +1492,14 @@
 
     <!--search bar-->
     <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="get" action="home">
-            <input type="text" name="query" placeholder="Tìm kiếm" title="Nhập từ khoá tìm kiếm" value="">
-            <div class="autocom-box">
-                <!-- here list are inserted from javascript -->
-            </div>
-            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
+
+        <div class="input-wrapper">
+            <form class="search-form d-flex align-items-center" method="GET" action="/search">
+                <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword">
+                <button type="submit" title="Search"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png" alt="" class="search-icon"></button>
+            </form>
+        </div>
+
     </div><!-- End Search Bar -->
 
     <!--icons navigation-->
@@ -1609,7 +1627,10 @@
 
 
         <div class="tabcontent" id="reviews" >
-
+            <div th:if="${messEmpty}">
+                <p th:text="${messEmpty}"></p>
+            </div>
+            <div th:unless="${messEmpty}">
             <div class="col-sm-12" th:each="feedback: ${feedbacks}">
                     <ul>
                         <li><a href=""><i class="fa fa-user" th:text="${feedback.customer.name}"></i></a></li>
@@ -1659,6 +1680,7 @@
                     <span class="fa fa-star"></span>
                 </div>
             </div>
+            </div>
         </div>
 
     </div>
@@ -1668,7 +1690,7 @@
 
     <h2 class="title text-center">Gợi Ý</h2>
     <div class ="row" >
-                <div class="col-lg-3" th:each="list: ${listproduct}" th:if="${list.category.id == product.category.id}">
+                <div class="col-lg-3" th:each="list: ${listproduct}" th:if="${list.category.id == product.category.id && list.stock>0}">
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">

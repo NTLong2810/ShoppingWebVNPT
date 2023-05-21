@@ -28,4 +28,19 @@ public class HomeServiceImpl implements HomeService{
     public List<Product> getProductsByCategory(Long categoryId) {
         return (List<Product>) productRepository.findByCategoryId(categoryId);
     }
+
+    @Override
+    public List<Product> searchProductsByName(String query) {
+        return productRepository.findByNameContainingIgnoreCase(query);
+    }
+    @Override
+    public List<Product> searchProductsByNameAndCategory(String query, Long categoryId) {
+        if (categoryId != null && categoryId != 0) {
+            // Tìm kiếm theo tên và thể loại
+            return productRepository.findByNameContainingIgnoreCaseAndCategoryId(query, categoryId);
+        } else {
+            // Chỉ tìm kiếm theo tên
+            return productRepository.findByNameContainingIgnoreCase(query);
+        }
+    }
 }
