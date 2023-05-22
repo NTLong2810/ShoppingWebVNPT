@@ -1,6 +1,7 @@
 package com.example.shoppingweb.repository;
 
 import com.example.shoppingweb.model.Order;
+import com.example.shoppingweb.model.Seller;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,5 +14,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findByStatusAndDeliveredBetween(String status, Date startDate, Date endDate);
     @Query("SELECT COUNT(DISTINCT o.customer.id) FROM Order o WHERE o.seller.id = :sellerId AND o.status = 'Đã giao hàng'")
     Long countCustomersBySellerIdAndStatus(@Param("sellerId") Long sellerId);
+
+    List<Order> findBySeller(Seller seller);
 
 }

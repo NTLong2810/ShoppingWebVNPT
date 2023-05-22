@@ -1,0 +1,172 @@
+* {
+    padding: 0;
+    margin: none;
+    box-sizing: border-box;
+}
+#sidebar span{
+    font-size: 14px;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.thead {
+    background-color: #999;
+}
+
+.product .title{
+    font-size: 14px;
+}
+
+.product img {
+    width: 50px;
+    height: auto;
+}
+
+.title {
+    font-size: 15px;
+}
+
+.title .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.edit {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.edit a{
+    font-size: 14px;
+}
+.search{
+    display: flex;
+    gap: 10px;
+}
+
+
+.search .select .form-select {
+    font-size: 14px;
+}
+
+
+
+.search .search-bar {
+    width: 70%;
+    padding: 0;
+    padding-bottom: 5px;
+}
+
+.filter {
+    margin-top: 15px;
+}
+
+.filter .price .minprice {
+    width: 40%;
+    font-size: 10px;
+    padding-bottom: 5px;
+    margin-right: 10px;
+}
+
+
+.filter .price .maxprice {
+    width: 40%;
+    font-size: 14px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+}
+
+.filter .price .label {
+    width: 10%;
+    padding-top: 5px;
+}
+
+.filter .category {
+    width: 30%;
+}
+
+.filter .publisher {
+    width: 30%;
+}
+
+.filter .cover-type {
+    width: 30%;
+}
+
+.filter .inventory .label {
+    width: 20%;
+    padding-top: 5px;
+}
+
+.filter .inventory .min {
+    width: 30%;
+    font-size: 14px;
+    padding-bottom: 5px;
+    margin-right: 10px;
+}
+
+.filter .inventory .max {
+    width: 30%;
+    font-size: 14px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+}
+
+.filter .sales .label {
+    width: 20%;
+    padding-top: 5px;
+}
+
+.filter .sales .min {
+    width: 30%;
+    font-size: 14px;
+    padding-bottom: 5px;
+    margin-right: 10px;
+}
+
+.filter .sales .max {
+    width: 30%;
+    font-size: 14px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+}
+
+.card-search {
+    border-bottom: 1px solid rgba(56, 50, 50, 0.7);
+    padding-bottom: 30px;
+}
+
+.submit {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submit input {
+    width: 10%;
+    margin-right: 20px;
+}
+.filter-by-date{
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+.cart-search .filter-by-date input{
+    font-size: 10px;
+}
+.product{
+    display: flex;
+}
+.table{
+    font-size: 14px;
+}
+

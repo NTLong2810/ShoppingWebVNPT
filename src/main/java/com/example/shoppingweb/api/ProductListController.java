@@ -2,14 +2,17 @@ package com.example.shoppingweb.api;
 
 import com.example.shoppingweb.model.Category;
 import com.example.shoppingweb.model.Product;
+import com.example.shoppingweb.model.Seller;
 import com.example.shoppingweb.repository.ProductRepository;
 import com.example.shoppingweb.service.HomeService;
+import org.apache.tomcat.util.http.parser.HttpParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -19,7 +22,14 @@ public class ProductListController {
     @Autowired
     private ProductRepository productRepository;
     @GetMapping("/product-list")
-    public String ShowListProduct(Model model){
+    public String ShowListProduct(Model model, HttpSession session){
+        // Lấy thông tin người bán từ session
+        Seller seller = (Seller) session.getAttribute("seller");
+        if (seller == null) {
+            // Người bán chưa đăng nhập, xử lý tùy ý (ví dụ: chuyển hướng đến trang đăng nhập)
+            return "redirect:/login";
+        }
+
         //Lấy ra danh sách sản phẩm
         List<Product> productList = productRepository.findAll();
         model.addAttribute("listproduct", productList);

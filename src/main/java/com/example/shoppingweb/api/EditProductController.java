@@ -1,9 +1,6 @@
 package com.example.shoppingweb.api;
 
-import com.example.shoppingweb.model.Brand;
-import com.example.shoppingweb.model.Category;
-import com.example.shoppingweb.model.Product;
-import com.example.shoppingweb.model.Supplier;
+import com.example.shoppingweb.model.*;
 import com.example.shoppingweb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +21,14 @@ public class EditProductController {
     private ProductService productService;
 
     @GetMapping("/editproduct/{id}")
-    public String showEditProductForm(@PathVariable("id") Long id, Model model) {
+    public String showEditProductForm(@PathVariable("id") Long id, Model model,HttpSession session) {
+        // Lấy thông tin người bán từ session
+        Seller seller = (Seller) session.getAttribute("seller");
+        if (seller == null) {
+            // Người bán chưa đăng nhập, xử lý tùy ý (ví dụ: chuyển hướng đến trang đăng nhập)
+            return "redirect:/login";
+        }
+
         Product product = productService.getProductById(id);
         if (product == null) {
             // Nếu sản phẩm không tồn tại, xử lý theo ý của bạn (ví dụ: hiển thị thông báo lỗi)

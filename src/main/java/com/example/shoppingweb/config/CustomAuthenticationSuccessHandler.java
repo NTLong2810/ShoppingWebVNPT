@@ -24,13 +24,13 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         String redirectUrl = "/home";
 
         for (GrantedAuthority authority : authentication.getAuthorities()) {
-            if (authority.getAuthority().equals("ROLE_CUSTOMER")) {
+            if (authority.getAuthority().equals("CUSTOMER")) {
                 redirectUrl = "/home";
                 break;
-            } else if (authority.getAuthority().equals("ROLE_SELLER")) {
+            } else if (authority.getAuthority().equals("SELLER")) {
                 redirectUrl = "/homeseller";
                 break;
-            } else if (authority.getAuthority().equals("ROLE_ADMIN")) {
+            } else if (authority.getAuthority().equals("ADMIN")) {
                 redirectUrl = "/homeadmin";
                 break;
             }

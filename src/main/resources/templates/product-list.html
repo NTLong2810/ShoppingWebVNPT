@@ -4,7 +4,7 @@
 <head>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>Product list</title>
+  <title>Bakasa</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <!-- Favicons -->
   <link href="assets/images/product-list/pngwing.com.png" rel="icon">
@@ -1147,7 +1147,7 @@
        display: flex;
        flex-direction: column;
        justify-content: center;
-       align-items: center;
+       align-items: flex-start;
      }
 
      .edit a i {
@@ -1334,11 +1334,6 @@
             <i class="bi bi-circle"></i><span>Tất cả</span>
           </a>
         </li>
-        <li>
-          <a href="/orderlistseller">
-            <i class="bi bi-circle"></i><span>Đơn huỷ</span>
-          </a>
-        </li>
       </ul>
     </li>
     <!-- End Components Nav -->
@@ -1460,7 +1455,6 @@
                     <th scope="col" class="text-center">Sản phẩm</th>
                     <th scope="col" class="sortable">Tồn có thể bán</th>
                     <th scope="col" class="sortable">Giá bán </th>
-                    <th scope="col" class="sortable">Doanh số </th>
                     <th scope="col" class="sortable">Phân loại </th>
                     <th scope="col" class="text-center">Thao tác </th>
                   </tr>
@@ -1482,8 +1476,6 @@
                       </td>
                       <td th:text="${list.stock}"></td>
                       <td th:text="${#numbers.formatCurrency(list.price)}"></td>
-                      <td> 50000 đ
-                      </td>
                       <td th:text="${list.category.name}"></td>
                       <td>
                         <div class="edit">
@@ -1512,7 +1504,6 @@
                     <th scope="col" class="text-center">Sản phẩm</th>
                     <th scope="col" class="sortable">Tồn có thể bán</th>
                     <th scope="col" class="sortable">Giá bán </th>
-                    <th scope="col" class="sortable">Doanh số </th>
                     <th scope="col" class="sortable">Phân loại </th>
                     <th scope="col" class="text-center">Thao tác </th>
                   </tr>
@@ -1534,8 +1525,6 @@
                         </td>
                         <td th:text="${list.stock}"></td>
                         <td th:text="${#numbers.formatCurrency(list.price)}"></td>
-                        <td> 50000 đ
-                        </td>
                         <td th:text="${list.category.name}"></td>
                         <td>
                           <div class="edit">
@@ -1559,7 +1548,6 @@
                     <th scope="col" class="text-center">Sản phẩm</th>
                     <th scope="col" class="sortable">Tồn có thể bán</th>
                     <th scope="col" class="sortable">Giá bán </th>
-                    <th scope="col" class="sortable">Doanh số </th>
                     <th scope="col" class="sortable">Phân loại </th>
                     <th scope="col" class="text-center">Thao tác</th>
                   </tr>
@@ -1581,8 +1569,6 @@
                         </td>
                         <td th:text="${list.stock}"></td>
                         <td th:text="${#numbers.formatCurrency(list.price)}"></td>
-                        <td> 50000 đ
-                        </td>
                         <td th:text="${list.category.name}"></td>
                         <td>
                           <div class="edit">

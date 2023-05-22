@@ -19,7 +19,13 @@ public class AddProductController {
     @Autowired
     private ProductService productService;
     @GetMapping("/addproduct")
-    public String ViewAddProductPage(Model model){
+    public String ViewAddProductPage(Model model ,HttpSession session){
+        // Lấy thông tin người bán từ session
+        Seller seller = (Seller) session.getAttribute("seller");
+        if (seller == null) {
+            // Người bán chưa đăng nhập, xử lý tùy ý (ví dụ: chuyển hướng đến trang đăng nhập)
+            return "redirect:/login";
+        }
         List<Supplier> suppliers = productService.getAllSuppliers();
         List<Brand> brands = productService.getAllBrands();
         List<Category> categoríes = productService.getAllCategories();
