@@ -53,7 +53,7 @@ public class ProductListController {
         } else {
             model.addAttribute("listproduct", searchResults);
         }
-
+        model.addAttribute("categoryId", categoryId);
         // Lấy lại danh sách thể loại để hiển thị trong view
         List<Category> categoryList = homeService.findAllCate();
         model.addAttribute("categoryList", categoryList);

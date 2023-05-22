@@ -1428,7 +1428,7 @@
                         <select class="form-control" name="categoryId" onchange="submitForm()" style="width: 150px; text-align: center;">
                           <option value="">Tất cả thể loại</option>
                           <!-- Sử dụng Thymeleaf để lặp qua danh sách thể loại và tạo các tùy chọn -->
-                          <option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.name}"></option>
+                          <option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.name}" th:selected="${category.id == categoryId}"></option>
                         </select>
                       </div><!-- End Select -->
 
@@ -1487,7 +1487,7 @@
                       <td th:text="${list.category.name}"></td>
                       <td>
                         <div class="edit">
-                          <a href="/editproduct?bid=${b.id}" title="Chỉnh sửa"> <img src="https://cdn-icons-png.flaticon.com/512/1827/1827951.png" alt="" style="max-width: 20px;"/>  </a>
+                          <a th:href="@{/editproduct/{id}(id=${list.id})}" title="Chỉnh sửa"> <img src="https://cdn-icons-png.flaticon.com/512/1827/1827951.png" alt="" style="max-width: 20px;"/>  </a>
                         </div>
                       </td>
                     </tr>
