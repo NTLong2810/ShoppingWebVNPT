@@ -1,7 +1,9 @@
 package com.example.shoppingweb.repository;
 
 import com.example.shoppingweb.model.Order;
+import com.example.shoppingweb.model.OrderDetail;
 import com.example.shoppingweb.model.Seller;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,5 +18,6 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     Long countCustomersBySellerIdAndStatus(@Param("sellerId") Long sellerId);
 
     List<Order> findBySeller(Seller seller);
+    List<Order> findOrdersBySellerIdAndStatus(Long sellerId, String status);
 
 }

@@ -1,356 +1,139 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>JSP Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bakasa</title>
-  <!-- Favicons -->
-  <link href="assets/images/favicon.png" rel="icon">
-  <link href="assets/images/apple-touch-icon.png" rel="apple-touch-icon">
+  <title>Order-Detail-Seller</title>
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  <!-- Bootstrap CSS Files -->
+  <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+  <!-- Boostrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-<!--  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
-  <!-- CSS File -->
-
-  <!--LINK OF CART-->
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!------ Include the above in your HEAD tag ---------->
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <!--LINK OF ACTION IN CART-->
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!------ Include the above in your HEAD tag ---------->
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-  <!--CSS-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!--CSS File -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/order-details-seller.css">
 <style>
+  * {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
 
-  /*for cart and checkout*/
-  .cart-wrap{
-    padding: 100px 20px;
-    font-family: 'Open Sans', sans-serif;
+  }
+
+  .container {
+    box-shadow: 0px 4px 20px 0px rgb(44 101 144 / 10%);
+    padding: 30px;
+    margin-bottom: 20px;
+    background: #fff;
+  }
+
+  .current-status {
+    line-height: 30px;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .container i {
+    color: rgb(12, 211, 128);
+    margin-right: 10px;
+
+  }
+
+  .order-id,
+  .address-order,
+  .transprot-infor {
+    margin-bottom: 20px;
+  }
+
+  .product {
+    width: 250px;
+  }
+
+  .product .image {
+    width: 80px;
+    height: 60px;
+  }
+
+  .product .image img {
     width: 100%;
     height: 100%;
-    font-size: 18px;
-  }
-  .content{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
-  .main-heading {
-    font-size: 25px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  .table-cart table {
-    width: auto;
-    font-size: smaller;
-  }
-  .table-cart thead {
-    border-bottom: 1px solid #e5e5e5;
-    margin-bottom: 5px;
-  }
-  .table-cart thead tr th {
-    color: black;
-    font-size: 14px;
-    font-weight: 400;
-  }
-  .table-cart tr td {
-    padding: 40px 0 27px;
-    vertical-align: middle;
-    /* width: 16%; */
-  }
-  .table-cart tr td:nth-child(1) {
-    width: 40%;
-  }
-  .table-cart tr td:nth-child(2) {
-    width: 25%;
-  }
-  .table-cart tr td:nth-child(3) {
-    width: 10%;
-  }
-  .table-cart tr td:nth-child(4) {
-    width: 10%;
-    /* text-align: right; */
-  }
-  .table-cart tr td:nth-child(5) {
-    width: 8%;
-    /* text-align: right; */
-  }
-  .table-cart tr td:nth-child(6) {
-    width: 7%;
-    /* text-align: right; */
-  }
-  .table-cart tr td .img-product {
-    width: 90px;
-    float: left;
-    margin-left: 8px;
-    margin-right: 31px;
-    line-height: 63px;
-  }
-  .table-cart tr td .img-product img {
-    width: 100%;
-  }
-  .table-cart tr td .name-product {
-    font-size: 13px;
-    color: #484848;
-    padding-top: 8px;
-    line-height: 24px;
-    width: 50%;
-  }
-  .table-cart tr td .unit-price {
-    text-align: right;
-    line-height: 64px;
-    margin-right: 40px;
-    color: #000000;
-    font-size: 13px;
-    font-weight: bolder;
-    font-family: 'Nunito';
-  }
-  .table-cart tr td .quantity {
-    position: relative;
-  }
-  /*product*/
-  .product{
-    display: flex;
-    align-items: center;
+    padding-left: 10px;
   }
 
-  /*unit price*/
-  .unit-price{
-    display: flex;
-    align-items: center;
-  }
-
-  /*product-count(quantity)*/
-  .product-count .qtyminus,
-  .product-count .qtyplus {
-    width: 30px;
-    height: 30px;
-    background: transparent;
-    text-align: center;
-    font-size: 15px;
-    line-height: 34px;
-    color: #000;
-    cursor: pointer;
-    font-weight: 600;
-  }
-  .product-count .qtyminus {
-    line-height: 32px;
-  }
-  .product-count .qtyminus {
-    border-radius: 3px 0 0 3px;
-  }
-  .product-count .qtyplus {
-    border-radius: 0 3px 3px 0;
-  }
-  .product-count .qty {
-    width: 30px;
-    text-align: center;
-    border: none;
-
-  }
-
-  .quantity{
-    font-size: 13px;
-  }
-  .quantity input{
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .count-inlineflex {
-    display: inline-flex;
-    border: solid 1px #ccc;
-    border-radius: 15px;
-  }
-  /* Chrome, Safari, Edge, Opera */
-  .count-inlineflex input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  .product .title {
+    width: 150px;
     margin: 0;
   }
-  /* Firefox */
-  .count-inlineflex input[type=number] {
-    -moz-appearance: textfield;
+
+  .product .title .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
-  .total {
-    font-size: 13px;
-    font-weight: 600;
-    color: red;
+
+
+
+  .payment-type,
+  .price {
     display: flex;
-    align-items: center;
+    justify-content: flex-end;
+    color: rgba(108, 117, 125, 1);
   }
 
-  .cart-remove{
-    display: flex;
-    align-items: center;
-  }
-  .cart-remove a {
-    font-weight: 500;
-    font-size: 13px;
-  }
-
-
-  /*==============================================================*/
-  /*coupon-box*/
-  /*.coupon-box {
-       padding: 63px 0 58px;
-      text-align: center;
-      border: 2px dotted #e5e5e5;
-      border-radius: 10px;
-      margin-top: 55px;
-      box-sizing: border-box;
-  }*/
-  .coupon-box{
-    box-sizing: border-box;
-    width: 50px;
-    /*height: 20%;*/
-    text-align: center;
-    box-shadow: 2px 1px 2px 1px lightgray;
-    border-radius: 10px;
+  .order-history .text-secondary {
     display: flex;
     justify-content: center;
-    box-sizing: border-box;
-
-  }
-  .coupon-box .coupon-title{
-    display: flex;
-    justify-items: center;
-    padding-top: 10px;
-  }
-  .coupon-box p{
-    font-size: 13px;
-  }
-  .coupon-box span{
-    color: gray;
-    font-size: 13px;
-  }
-  .coupon-box .coupon-input td{
-    padding-top: 25px;
-  }
-  .coupon-button{
-    padding-top: 4px;
   }
 
-  input:focus {
-    outline: none;
-    box-shadow: none;
+  .order-history {
+    position: relative;
   }
-  .round-black-btn {
-    border-radius: 10px;
-    background: #212529;
-    color: #fff;
-    /*padding: 5px 0;*/
-    text-align: center;
-    border: solid 2px #212529;
-    transition: all 0.5s ease-in-out 0s;
-    cursor: pointer;
-    font-size: 13px;
+
+
+  .order-history .status {
+    border-top: 3px solid #e8e8e8;
+    padding-top: 15px;
+  }
+
+  .order-history .circle {
+    position: absolute;
+    top: -10px;
     width: 100%;
-    box-sizing: border-box;
   }
-  .round-black-btn:hover,
-  .round-black-btn:focus {
-    background: transparent;
-    color: #212529;
-    text-decoration: none;
-  }
-  /*Check-out*/
-  .cart-summary {
-    border-radius: 3px;
-    background: #e9ecef;
-    padding: 25px;
-    box-sizing: border-box;
-  }
-  .cart-summary h3 {
-    font-size: 21px;
-    color: #000000;
-    letter-spacing: 1px;
-    font-weight: 500;
-  }
-  .cart-summary table {
-    table-layout: fixed;
-    width: 100%;
 
-  }
-  .cart-summary table tr th,
-  .cart-summary table tr td {
-    width: auto;
-    padding: 3px 0;
-    vertical-align: middle;
-  }
-  .cart-summary table tr td:last-child {
-    /* text-align: right; */
-  }
-  .cart-summary table tr td.subtotal {
-    font-size: 13px;
-    color: #000000;
-  }
-  .cart-summary table tr td.free-shipping {
-    font-size: 14px;
-    color: #6f6f6f;
-  }
-  .cart-summary table tr.total-row td {
-    padding-top: 25px;
-  }
-  .cart-summary table tr td.price-total {
-    font-size: 27px;
-    font-weight: 600;
-    color: red;
-  }
-  .cart-summary .coupon-row{
+  .order-history .circle span {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
   }
 
-  .btn-cart-totals {
-    text-align: center;
-    margin-top: 60px;
-    margin-bottom: 20px;
-  }
-  .btn-cart-totals .round-black-btn {
-    margin: 10px 0;
 
+
+  .order-history .circle i {
+    color: #e8e8e8;
+    background-color: #e8e8e8;
+    border-radius: 50%;
   }
-  .subtotal{
-    display: flex;
-    gap: 25%;
-    margin-top: 20px;
+
+  .order-history .circle .active i  {
+    color: rgb(12, 211, 128);
+    background-color:rgb(12, 211, 128);
   }
-  .subtotal p{
+
+  .order-history .order-status-datetime {
     font-size: 14px;
   }
-  .subtraction{
-    display: flex;
-    gap: 25%;
-  }
-  .subtraction p{
-    font-size: 14px;
 
-  }
-  .check-out{
-    margin-top: 80px;
-  }
-
-
-  /*--------------------------------------------------------------
-  # General
-  --------------------------------------------------------------*/
   :root {
     scroll-behavior: smooth;
   }
@@ -359,11 +142,8 @@
     font-family: "Open Sans", sans-serif;
     background: #f6f9ff;
     color: #444444;
-    margin: 0;
   }
-  /* body::-webkit-scrollbar{
-    display: none;
-  } */
+
   a {
     color: #4154f1;
     text-decoration: none;
@@ -386,7 +166,7 @@
   /*--------------------------------------------------------------
   # Main
   --------------------------------------------------------------*/
-  /* #main {
+  #main {
     margin-top: 60px;
     padding: 20px 30px;
     transition: all 0.3s;
@@ -396,7 +176,7 @@
     #main {
       padding: 20px;
     }
-  } */
+  }
 
   /*--------------------------------------------------------------
   # Page Title
@@ -409,7 +189,7 @@
     font-size: 24px;
     margin-bottom: 0;
     font-weight: 600;
-    color: #012970;
+    color: #0ac486;
   }
 
   /*--------------------------------------------------------------
@@ -422,7 +202,7 @@
     right: 15px;
     bottom: 15px;
     z-index: 99999;
-    background: #4154f1;
+    background: #0ad692;
     width: 40px;
     height: 40px;
     border-radius: 4px;
@@ -436,7 +216,7 @@
   }
 
   .back-to-top:hover {
-    background: #6776f4;
+    background: #0ac486;
     color: #fff;
   }
 
@@ -644,7 +424,7 @@
   }
 
   .accordion-button:not(.collapsed) {
-    color: #012970;
+    color: #0ac486;
     background-color: #f6f9ff;
   }
 
@@ -656,7 +436,7 @@
 
   .accordion-flush .accordion-button:not(.collapsed) {
     box-shadow: none;
-    color: #4154f1;
+    color: #0ac486;
   }
 
   .accordion-flush .accordion-body {
@@ -665,8 +445,53 @@
     font-size: 15px;
   }
 
+  /* Breadcrumbs */
+  .breadcrumb {
+    font-size: 14px;
+    font-family: "Nunito", sans-serif;
+    color: #899bbd;
+    font-weight: 600;
+  }
 
+  .breadcrumb a {
+    color: #899bbd;
+    transition: 0.3s;
+  }
 
+  .breadcrumb a:hover {
+    color: #51678f;
+  }
+
+  .breadcrumb .breadcrumb-item::before {
+    color: #899bbd;
+  }
+
+  .breadcrumb .active {
+    color: #51678f;
+    font-weight: 600;
+  }
+
+  /* Bordered Tabs */
+  .nav-tabs-bordered {
+    border-bottom: 2px solid #ebeef4;
+  }
+
+  .nav-tabs-bordered .nav-link {
+    margin-bottom: -2px;
+    border: none;
+    color: #2c384e;
+  }
+
+  .nav-tabs-bordered .nav-link:hover,
+  .nav-tabs-bordered .nav-link:focus {
+    color: #0ac486;
+  }
+
+  .nav-tabs-bordered .nav-link.active {
+    background-color: #fff;
+    color: #0ac486;
+    border-bottom: 2px solid #0ac486;
+  }
 
   /*--------------------------------------------------------------
   # Header
@@ -768,7 +593,7 @@
   }
 
   .header .search-form button i {
-    color: #012970;
+    color: #244d3f;
   }
 
   /*--------------------------------------------------------------
@@ -785,12 +610,13 @@
 
   .header-nav .nav-icon {
     font-size: 22px;
-    color: #012970;
+    color: #244d3f;
+    margin-right: 25px;
     position: relative;
   }
 
   .header-nav .nav-profile {
-    color: #012970;
+    color: #244d3f;
   }
 
   .header-nav .nav-profile img {
@@ -945,13 +771,13 @@
     background-color: #aab7cf;
   }
 
-  /* @media (min-width: 1200px) {
+  @media (min-width: 1200px) {
 
     #main,
     #footer {
       margin-left: 300px;
     }
-  } */
+  }
 
   @media (max-width: 1199px) {
     .toggle-sidebar .sidebar {
@@ -1000,7 +826,7 @@
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #4154f1;
+    color: #0ac486;
     transition: 0.3;
     background: #f6f9ff;
     padding: 10px 15px;
@@ -1010,11 +836,11 @@
   .sidebar-nav .nav-link i {
     font-size: 16px;
     margin-right: 10px;
-    color: #4154f1;
+    color: #0ac486;
   }
 
   .sidebar-nav .nav-link.collapsed {
-    color: #012970;
+    color: #0ac486;
     background: #fff;
   }
 
@@ -1023,12 +849,12 @@
   }
 
   .sidebar-nav .nav-link:hover {
-    color: #4154f1;
+    color: #0ac486;
     background: #f6f9ff;
   }
 
   .sidebar-nav .nav-link:hover i {
-    color: #4154f1;
+    color: #0ac486;
   }
 
   .sidebar-nav .nav-link .bi-chevron-down {
@@ -1051,7 +877,7 @@
     align-items: center;
     font-size: 14px;
     font-weight: 600;
-    color: #012970;
+    color: #0ac486;
     transition: 0.3;
     padding: 10px 0 10px 40px;
     transition: 0.3s;
@@ -1066,11 +892,11 @@
 
   .sidebar-nav .nav-content a:hover,
   .sidebar-nav .nav-content a.active {
-    color: #4154f1;
+    color: #0ac486;
   }
 
   .sidebar-nav .nav-content a.active i {
-    background-color: #4154f1;
+    background-color: #0ac486;
   }
 
   /*--------------------------------------------------------------
@@ -1093,7 +919,7 @@
 
   .dashboard .filter .icon:hover,
   .dashboard .filter .icon:focus {
-    color: #4154f1;
+    color: #0ac486;
   }
 
   .dashboard .filter .dropdown-header {
@@ -1121,7 +947,7 @@
 
   .dashboard .info-card h6 {
     font-size: 28px;
-    color: #012970;
+    color: #0ac486;
     font-weight: 700;
     margin: 0;
     padding: 0;
@@ -1137,17 +963,17 @@
   }
 
   .dashboard .sales-card .card-icon {
-    color: #4154f1;
+    color: #0ac486;
     background: #f6f6fe;
   }
 
   .dashboard .revenue-card .card-icon {
-    color: #2eca6a;
+    color: #0ac486;
     background: #e0f8e9;
   }
 
   .dashboard .customers-card .card-icon {
-    color: #ff771d;
+    color: #0ac486;
     background: #ffecdf;
   }
 
@@ -1217,12 +1043,12 @@
   }
 
   .dashboard .news h4 a {
-    color: #012970;
+    color: #0ac486;
     transition: 0.3s;
   }
 
   .dashboard .news h4 a:hover {
-    color: #4154f1;
+    color: #0ac486;
   }
 
   .dashboard .news p {
@@ -1289,7 +1115,7 @@
     background-color: #fff;
     border-radius: 0.25rem;
     text-align: center;
-    color: #012970;
+    color: #0ac486;
     padding: 15px 0;
   }
 
@@ -1320,7 +1146,7 @@
   .profile .profile-card h2 {
     font-size: 24px;
     font-weight: 700;
-    color: #2c384e;
+    color: #0ac486;
     margin: 10px 0 0 0;
   }
 
@@ -1331,14 +1157,14 @@
   .profile .profile-card .social-links a {
     font-size: 20px;
     display: inline-block;
-    color: rgba(1, 41, 112, 0.5);
+    color: rgba(1, 112, 97, 0.5);
     line-height: 0;
     margin-right: 10px;
     transition: 0.3s;
   }
 
   .profile .profile-card .social-links a:hover {
-    color: #012970;
+    color: #0ac486;
   }
 
   .profile .profile-overview .row {
@@ -1347,196 +1173,22 @@
   }
 
   .profile .profile-overview .card-title {
-    color: #012970;
+    color: #0ac486;
   }
 
   .profile .profile-overview .label {
     font-weight: 600;
-    color: rgba(1, 41, 112, 0.6);
+    color: rgba(1, 112, 97, 0.5);
   }
 
   .profile .profile-edit label {
     font-weight: 600;
-    color: rgba(1, 41, 112, 0.6);
+    color: rgba(1, 112, 97, 0.5);
   }
 
   .profile .profile-edit img {
     max-width: 120px;
   }
-
-  /*--------------------------------------------------------------
-  # F.A.Q Page
-  --------------------------------------------------------------*/
-  .faq .basic h6 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #4154f1;
-  }
-
-  .faq .basic p {
-    color: #6980aa;
-  }
-
-  /*--------------------------------------------------------------
-  # Contact
-  --------------------------------------------------------------*/
-  .contact .info-box {
-    padding: 28px 30px;
-  }
-
-  .contact .info-box i {
-    font-size: 38px;
-    line-height: 0;
-    color: #4154f1;
-  }
-
-  .contact .info-box h3 {
-    font-size: 20px;
-    color: #012970;
-    font-weight: 700;
-    margin: 20px 0 10px 0;
-  }
-
-  .contact .info-box p {
-    padding: 0;
-    line-height: 24px;
-    font-size: 14px;
-    margin-bottom: 0;
-  }
-
-  .contact .php-email-form .error-message {
-    display: none;
-    color: #fff;
-    background: #ed3c0d;
-    text-align: left;
-    padding: 15px;
-    margin-bottom: 24px;
-    font-weight: 600;
-  }
-
-  .contact .php-email-form .sent-message {
-    display: none;
-    color: #fff;
-    background: #18d26e;
-    text-align: center;
-    padding: 15px;
-    margin-bottom: 24px;
-    font-weight: 600;
-  }
-
-  .contact .php-email-form .loading {
-    display: none;
-    background: #fff;
-    text-align: center;
-    padding: 15px;
-    margin-bottom: 24px;
-  }
-
-  .contact .php-email-form .loading:before {
-    content: "";
-    display: inline-block;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    margin: 0 10px -6px 0;
-    border: 3px solid #18d26e;
-    border-top-color: #eee;
-    -webkit-animation: animate-loading 1s linear infinite;
-    animation: animate-loading 1s linear infinite;
-  }
-
-  .contact .php-email-form input,
-  .contact .php-email-form textarea {
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 14px;
-    border-radius: 0;
-  }
-
-  .contact .php-email-form input:focus,
-  .contact .php-email-form textarea:focus {
-    border-color: #4154f1;
-  }
-
-  .contact .php-email-form input {
-    padding: 10px 15px;
-  }
-
-  .contact .php-email-form textarea {
-    padding: 12px 15px;
-  }
-
-  .contact .php-email-form button[type=submit] {
-    background: #4154f1;
-    border: 0;
-    padding: 10px 30px;
-    color: #fff;
-    transition: 0.4s;
-    border-radius: 4px;
-  }
-
-  .contact .php-email-form button[type=submit]:hover {
-    background: #5969f3;
-  }
-
-  @-webkit-keyframes animate-loading {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes animate-loading {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  /*--------------------------------------------------------------
-  # Error 404
-  --------------------------------------------------------------*/
-  .error-404 {
-    padding: 30px;
-  }
-
-  .error-404 h1 {
-    font-size: 180px;
-    font-weight: 700;
-    color: #4154f1;
-    margin-bottom: 0;
-    line-height: 150px;
-  }
-
-  .error-404 h2 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #012970;
-    margin-bottom: 30px;
-  }
-
-  .error-404 .btn {
-    background: #51678f;
-    color: #fff;
-    padding: 8px 30px;
-  }
-
-  .error-404 .btn:hover {
-    background: #3e4f6f;
-  }
-
-  @media (min-width: 992px) {
-    .error-404 img {
-      max-width: 50%;
-    }
-  }
-
   /*--------------------------------------------------------------
   # Footer
   --------------------------------------------------------------*/
@@ -1549,100 +1201,65 @@
 
   .footer .copyright {
     text-align: center;
-    color: #012970;
+    color: #0ac486;
   }
 
   .footer .credits {
     padding-top: 5px;
     text-align: center;
     font-size: 13px;
-    color: #012970;
+    color: #0ac486;
   }
 </style>
-  <script>
-    function decrementQuantity(input) {
-      var quantity = parseInt(input.nextElementSibling.value);
-      if (quantity > 1) {
-        quantity--;
-        input.nextElementSibling.value = quantity;
-        updateTotalPrice(input, quantity);
-      }
-    }
-    function incrementQuantity(input) {
-      var quantity = parseInt(input.previousElementSibling.value);
-      quantity++;
-      input.previousElementSibling.value = quantity;
-      updateTotalPrice(input, quantity);
-    }
-    function formatCurrency(amount) {
-      var formatter = new Intl.NumberFormat('vi-VN', {
-        style: 'currency',
-        currency: 'VND',
-      });
-      return formatter.format(amount);
-    }
-    function updateTotalPrice(input, quantity) {
-      var unitPrice = parseFloat(input.closest('tr').querySelector('.unit-price').innerText.replace(/[^0-9\.-]+/g,""));
-      var totalPrice = unitPrice * quantity;
-      input.closest('tr').querySelector('.total').innerText = formatCurrency(totalPrice);
-    }
-  </script>
 </head>
 <body>
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
-  <!--Logo-->
+
   <div class="d-flex align-items-center justify-content-between">
-    <a href="/home" class="logo d-flex align-items-center">
-      <img src="assets/images/cart/pngwing.com.png" alt="">
+    <a href="index.html" class="logo d-flex align-items-center">
+      <img src="assets/img/logo.png" alt="">
       <span class="d-none d-lg-block">Bakasa</span>
     </a>
   </div><!-- End Logo -->
-  <!--icons navigation-->
+
+  <!-- <div class="search-bar">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+  </div>End Search Bar -->
+
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center">
 
-      <!--search icon-->
       <li class="nav-item d-block d-lg-none">
         <a class="nav-link nav-icon search-bar-toggle " href="#">
           <i class="bi bi-search"></i>
         </a>
       </li><!-- End Search Icon-->
-      <!--Cart, order icon-->
-      <li class="nav-item dropdown">
-        <a class="nav-link nav-icon" th:href="@{/order/{customerid}(customerid=${session.customer.id})}">
-          <!--          <i class="bi bi-cart"></i>-->
-          <img src="https://icons.veryicon.com/png/o/system/linear-chh/order-27.png" alt="" class="rounded-circle" style="max-height: 40px; max-width: 40px">
-        </a>
 
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link nav-icon" th:href="@{/cart/{cartid}(cartid=${session.customer.id})}">
-          <!--          <i class="bi bi-cart"></i>-->
-          <img src="https://icons-for-free.com/iconfiles/png/512/cart-131964784999299812.png" alt="" class="rounded-circle" style="max-height: 40px; max-width: 40px">
-        </a>
-
-      </li><!-- End cart,order Icon -->
 
       <li class="nav-item dropdown pe-3">
 
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img th:src="${session.customer.image}" alt="Profile" class="rounded-circle">
-          <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${session.customer.name}"></span>
+
+          <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${session.seller.name}"></span>
         </a><!-- End Profile Iamge Icon -->
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
-            <h6 th:text="${session.customer.name}"></h6>
+            <h6 th:text="${session.seller.name}"></h6>
+            <span>Người bán</span>
           </li>
           <li>
             <hr class="dropdown-divider">
           </li>
 
           <li>
-            <a class="dropdown-item d-flex align-items-center" href="/user-profile">
+            <a class="dropdown-item d-flex align-items-center" href="user-profile">
               <i class="bi bi-person"></i>
-              <span>Thông tin người dùng</span>
+              <span>Tài khoản của tôi</span>
             </a>
           </li>
           <li>
@@ -1650,7 +1267,7 @@
           </li>
 
           <li>
-            <a class="dropdown-item d-flex align-items-center" href="/logout">
+            <a class="dropdown-item d-flex align-items-center" href="logout">
               <i class="bi bi-box-arrow-right"></i>
               <span>Đăng xuất</span>
             </a>
@@ -1664,143 +1281,248 @@
 
 </header><!-- End Header -->
 
-<div class="content">
-  <div class="cart-wrap">
-    <!-- <div clss="container"> -->
-    <div class="row">
-      <div class="col-lg-8 cart">
-        <!--title-->
-        <div class="main-heading">Giỏ hàng</div>
-        <!--table cart-->
-        <div class="table-cart">
-          <table>
-            <thead>
-            <tr>
-              <th>Tất cả sản phẩm</th>
-              <th>Đơn giá</th>
-              <th>Số lượng</th>
-              <th>Tổng</th>
-              <th>Thao tác</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="list :${session.listcart}">
-              <td>
-                <div class="product">
-                  <div class="img-product">
-                    <img th:src="${list.product.image}" alt="" class="mCS_img_loaded">
-                  </div>
-                  <div class="name-product" th:text="${list.product.name}">
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="unit-price" th:text="${#numbers.formatCurrency(list.product.price)}">
-                </div>
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+      <a
+              class="nav-link collapsed"
+              data-bs-target="#components-nav"
+              data-bs-toggle="collapse"
+              href="#"
+      >
+        <i class="bi bi-menu-button-wide"></i><span>Quản lí đơn hàng</span
+      ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+              id="components-nav"
+              class="nav-content collapse"
+              data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a href="/orderlistseller">
+            <i class="bi bi-circle"></i><span>Tất cả</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- End Components Nav -->
 
-              </td>
-              <td class="product-count">
-                <div class="quantity">
-<!--                  <form action="#" class="count-inlineflex">-->
-<!--                    <div class="qtyminus" onClick="decrementQuantity(this)">-</div>-->
-                    <input type="text" name="quantity" th:value="${list.quantity}" class="qty">
-<!--                    <div class="qtyplus" onClick="incrementQuantity(this)">+</div>-->
-<!--                  </form>-->
-                </div>
+    <li class="nav-item">
+      <a
+              class="nav-link collapsed"
+              data-bs-target="#forms-nav"
+              data-bs-toggle="collapse"
+              href="#"
+      >
+        <i class="bi bi-journal-text"></i><span>Quản lí sản phẩm</span
+      ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+              id="forms-nav"
+              class="nav-content collapse"
+              data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a href="/product-list">
+            <i class="bi bi-circle"></i><span>Tất cả sản phẩm</span>
+          </a>
+        </li>
+        <li>
+          <a href="/addproduct">
+            <i class="bi bi-circle"></i><span>Thêm sản phẩm</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- End Forms Nav -->
 
-              </td>
-              <td>
-                <div class="total" th:text="${#numbers.formatCurrency(list.price)}">
-                </div>
-              </td>
-              <td>
-                <div class="cart-remove">
-                  <a th:href="@{/cart/remove/{id}(id=${list.id})}" class="btn btn-outline-danger">Remove</a>
-                </div>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+    <li class="nav-item">
+      <a
+              class="nav-link collapsed"
+              data-bs-target="#tables-nav"
+              href="/homeseller"
+      >
+        <i class="bi bi-layout-text-window-reverse"></i
+        ><span>Doanh thu</span>
+      </a>
+    </li>
+  </ul>
+</aside>
+<!-- End Sidebar-->
 
-        </div>
-        <!--end table-cart -->
+
+<main id="main" class="main">
+  <div class="container">
+    <div class="current-status">
+      <div class="row">
+        <div class="title col-12"><i class="bi bi-file-earmark-text"></i><span th:text="${order.status}"></span></div>
       </div>
-      <!-- cart check out -->
-      <div class="col-lg-4 check-out" >
-        <div class="cart-summary">
-          <h3>Summary</h3>
-            <table>
-              <tbody>
-              <tr>
-                <td>Subtotal</td>
-                <td class="subtotal" th:text="${#numbers.formatCurrency(session.totalPrice)}"></td>
-              </tr>
-              <tr>
-                <td>Shipping</td>
-                <td class="free-shipping">Free Shipping</td>
-              </tr>
-              <tr class="total-row">
-                <td>Total</td>
-                <td class="price-total" th:text="${#numbers.formatCurrency(session.totalPrice)}"></td>
-              </tr>
-              </tbody>
-            </table>
-            <div class="btn-cart-totals">
-              <form action="/checkout" method="post">
-                <input type="hidden" name="cartid" th:value="${session.customer.id}"/>
-                <input type="hidden" name="totalPrice" th:value="${session.totalPrice}" />
-                <!-- Các trường khác trong form -->
-                <button type="submit">Thanh Toán</button>
-              </form>
-            </div>
-            <!-- /.btn-cart-totals -->
-        </div>
-        <!-- /.cart-totals -->
-      </div>
-      <!-- end cart check out -->
     </div>
-    <!-- </div> -->
   </div>
-</div>
 
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer">
-  <div class="copyright">
-    &copy; Copyright <strong><span>Bakasa</span></strong>. All Rights Reserved
+  <div class="container">
+    <div class="order-id">
+      <div class="row">
+
+        <p class="title col-12"><i class="bi bi-hash"></i>Mã đơn hàng</p>
+      </div>
+      <div class="id">
+        <div class="row">
+          <p class="text-secondary col-12" th:text="${order.id}"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="address-order">
+      <div class="row">
+
+        <p class="title col-12"><i class="bi bi-geo-alt"></i>Địa chỉ nhận hàng</p>
+      </div>
+      <div class="row">
+        <p class="name text-secondary col-12" th:text="${order.customer.name}"></p>
+        <p class="phone text-secondary col-12" th:text="${order.customer.phone}"></p>
+      </div>
+      <div class="row">
+        <p class="address text-secondary col-12" th:text="${order.customer.shipped_address}" th:if="${order.customer.shipped_address} != null"></p>
+        <p class="address text-secondary col-12" th:text="${order.customer.address}" th:if="${order.customer.shipped_address} == null"></p>
+      </div>
+    </div>
+
+    <div class="transprot-infor">
+      <div class="row">
+
+        <p class="title col-12"><i class="bi bi-truck"></i>Thông tin vận chuyển</p>
+      </div>
+      <div class="row">
+        <p class="text-secondary col-12">Giao tiêu chuẩn</p>
+      </div>
+    </div>
+
+    <div class="order-history">
+      <div class="circle">
+        <div class="row">
+          <span class="col-4 active" th:if="${order.status == 'Chờ thanh toán'}"><i class="bi bi-circle"></i></span>
+          <span class="col-4"  th:if="${order.status != 'Chờ thanh toán'}"><i class="bi bi-circle"></i></span>
+          <span class="col-4 active" th:if="${order.status =='Đang xử lý'}"><i class="bi bi-circle"></i></span>
+          <span class="col-4 active" th:if="${order.status =='Đang vận chuyển'}"><i class="bi bi-circle"></i></span>
+          <span class="col-4" th:if="${order.status !='Đang xử lý'}"><i class="bi bi-circle"></i></span>
+          <span class="col-4 active" th:if="${order.status == 'Đã giao hàng'}"><i class="bi bi-circle"></i></span>
+          <span class="col-4 active" th:if="${order.status == 'Đã huỷ'}"><i class="bi bi-circle"></i></span>
+          <span class="col-4 " th:if="${order.status != 'Đã giao hàng' && order.status !='Đã huỷ'}"><i class="bi bi-circle"></i></span>
+        </div>
+      </div>
+      <div class="status">
+        <div class="row">
+          <p class="text-secondary col-4">Thanh toán</p>
+          <p class="text-secondary col-4">
+            <span th:if="${order.status =='Đang vận chuyển'}">Vận chuyển</span>
+            <span th:if="${order.status =='Đang xử lý'}">Xử lý</span>
+          </p>
+          <p class="text-secondary col-4">
+            <span th:if="${order.status == 'Đã giao hàng'}">Giao hàng thành công</span>
+            <span th:if="${order.status == 'Đã huỷ'}">Ðã hủy</span>
+          </p>
+        </div>
+      </div>
+      <div class="order-status-datetime">
+        <div class="row">
+          <p class="text-secondary col-4" th:text="${#temporals.format(order.createdAt.toLocalDateTime(), 'dd/MM/yyyy')}" th:if="${order.createdAt != null}"></p>
+          <p class="text-secondary col-4" th:if="${order.createdAt == null}"></p>
+          <p class="text-secondary col-4"></p>
+          <p class="text-secondary col-4" th:text="${#temporals.format(order.delivered.toLocalDateTime(), 'dd/MM/yyyy')}" th:if="${order.delivered != null}"></p>
+          <p class="text-secondary col-4" th:if="${order.delivered == null}"></p>
+        </div>
+      </div>
+    </div>
+
+
   </div>
-  <div class="credits">
-    Designed by <a href="#">Bakasa</a>
+
+  <div class="container">
+    <div class="card-header">
+      <div class="row">
+        <p class="title col-12"><i class="bi bi-cash-coin"></i>Thông tin thanh toán</p>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="bg-success text-white">
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Sản phẩm</th>
+          <th scope="col">Đơn giá</th>
+          <th scope="col">Số lượng
+          </th>
+          <th scope="col">Thành tiền </th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="list, stat: ${orderDetails}">
+            <td th:text="${stat.count}"></td>
+            <td class="product">
+              <div class="row">
+                <div class="image col-md-4"><img th:src="${list.product.image}" alt="product-image">
+                </div>
+                <div class="col-md-8 ">
+                  <div class="text" th:text="${list.product.name}" style="font-size: smaller"></div>
+
+                </div>
+              </div>
+            </td>
+            <td th:text="${#numbers.formatCurrency(list.product.price)}"></td>
+            <td th:text="${list.quantity}"></td>
+            <td th:text="${#numbers.formatCurrency(list.price)}"></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- End Table with hoverable rows -->
+    </div>
+
+    <div class="total-cost">
+      <div class="row">
+        <p class="col-sm-8 payment-type">Tổng tiền sản phẩm:</p>
+        <p class="col-sm-2 price" th:text="${#numbers.formatCurrency(order.total)}"></p>
+      </div>
+
+    </div>
   </div>
-</footer><!-- End Footer -->
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div class="container">
+    <div class="customer-payment">
+      <div class="card-header">
+        <div class="row">
+          <p class="title col-12"><i class="bi bi-wallet2"></i>Thanh toán của Người Mua</p>
+        </div>
 
-</body>
+      </div>
+      <div class="payment-content">
+        <div class="payment-total-cost">
+          <div class="row">
+            <p class="col-sm-8 payment-type">Tổng tiền sản phẩm:</p>
+            <p class="col-sm-2 price" th:text="${#numbers.formatCurrency(order.total)}"></p>
+          </div>
+        </div>
+        <div class="shipping-cost">
+          <div class="row">
+            <p class="col-sm-8 payment-type">Phí vận chuyển:</p>
+            <p class="col-sm-2 price">0đ</p>
+          </div>
+        </div>
+        <div class="total-payment">
+          <div class="row">
+            <p class="col-sm-8 payment-type">Tổng tiền Thanh toán:</p>
+            <p class="col-sm-2 price" th:text="${#numbers.formatCurrency(order.total)}"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
 
 <!-- Vendor JS Files -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script type="text/javascript">
-  var swiper = new Swiper(".card-slider", {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    loop: true,
-    autoplay:{
-      delay: 5000,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-</script>
-<script src="vendor/apexcharts/apexcharts.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<!--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
-<!-- Template Main JS File -->
-<!--<script src="assets/js/main.js"></script>-->
-<!--<script src="assets/js/cart/cart.js"></script>-->
+</body>
 </html>

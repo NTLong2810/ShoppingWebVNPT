@@ -64,7 +64,9 @@ public class UserProfileController {
             account.setEmail(customerEmail);
         }
         customer.setAddress(customerAddress);
-        customer.setShipped_address(customerShippedAddress);
+        if (customerShippedAddress != null && !customerShippedAddress.isEmpty()) {
+            customer.setShipped_address(customerShippedAddress);
+        }
 
         // lưu khách hàng vào database
         customerRepository.save(customer);
