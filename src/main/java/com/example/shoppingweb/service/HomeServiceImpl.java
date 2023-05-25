@@ -7,6 +7,7 @@ import com.example.shoppingweb.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class HomeServiceImpl implements HomeService{
@@ -42,5 +43,16 @@ public class HomeServiceImpl implements HomeService{
             // Chỉ tìm kiếm theo tên
             return productRepository.findByNameContainingIgnoreCase(query);
         }
+    }
+
+    @Override
+    public List<String> getSuggestions(String query) {
+        // Lấy danh sách sản phẩm dựa trên query và trích xuất tên sản phẩm
+        List<Product> searchResults = searchProductsByName(query);
+        List<String> suggestions = new ArrayList<>();
+        for (Product product : searchResults) {
+            suggestions.add(product.getName());
+        }
+        return suggestions;
     }
 }

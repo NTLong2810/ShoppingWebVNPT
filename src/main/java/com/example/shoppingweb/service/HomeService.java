@@ -11,4 +11,5 @@ public interface HomeService {
     List<Product> getProductsByCategory(Long categoryId);
     List<Product> searchProductsByName(String query);
     List<Product> searchProductsByNameAndCategory(String query,Long categoryId);
+    List<String> getSuggestions(String keyword);
 }

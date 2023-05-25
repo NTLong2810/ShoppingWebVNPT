@@ -1333,17 +1333,7 @@
           </li>
 
           <li>
-            <a class="dropdown-item d-flex align-items-center" href="user-profile">
-              <i class="bi bi-person"></i>
-              <span>Tài khoản của tôi</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="logout">
+            <a class="dropdown-item d-flex align-items-center" href="/logout">
               <i class="bi bi-box-arrow-right"></i>
               <span>Đăng xuất</span>
             </a>
@@ -1583,9 +1573,9 @@
 
                         <td>
                           <div class="edit">
-                            <form action="orderlistseller" method="POST">
-                              <input type="hidden" name="statusid" value="3"/>
-                              <input type="hidden" name="orderid" value="${ois.id}"/>
+                            <form action="updatestatus" method="POST">
+                              <input type="hidden" name="statusname" value="Đang vận chuyển"/>
+                              <input type="hidden" name="orderid" th:value="${list.id}"/>
                               <input class="btn btn-success" type="submit" value="Chấp nhận đơn" />
                             </form>
                           </div>
@@ -1647,9 +1637,9 @@
 
                       <td>
                         <div class="edit">
-                          <form action="orderlistseller" method="POST">
-                            <input type="hidden" name="statusid" value="5"/>
-                            <input type="hidden" name="orderid" value="${ois.id}"/>
+                          <form action="updatestatus" method="POST">
+                            <input type="hidden" name="statusname" value="Đã huỷ"/>
+                            <input type="hidden" name="orderid" th:value="${list.id}"/>
                             <input class="btn btn-success" type="submit" value="Chấp nhận huỷ" />
                           </form>
                         </div>
@@ -1710,9 +1700,9 @@
 
                       <td>
                         <div class="edit">
-                          <form action="orderlistseller" method="POST">
-                            <input type="hidden" name="statusid" value="4"/>
-                            <input type="hidden" name="orderid" value="${ois.id}"/>
+                          <form action="updatestatus" method="POST">
+                            <input type="hidden" name="statusname" value="Đã giao hàng"/>
+                            <input type="hidden" name="orderid" th:value="${list.id}"/>
                             <input class="btn btn-success" type="submit" value="Đã giao hàng" />
                           </form>
                         </div>
